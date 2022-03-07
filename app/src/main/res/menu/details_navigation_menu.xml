@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/call_details"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_phone"
+        android:title="@string/restaurant_call"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/like_details"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_star"
+        android:title="@string/restaurant_like"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/website_details"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_language"
+        android:title="@string/restaurant_website"
+        app:showAsAction="ifRoom" />
+</menu>

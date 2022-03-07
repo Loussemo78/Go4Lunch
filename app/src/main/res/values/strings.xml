@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Go4Lunch</string>
+    <string name="facebook_application_id" translatable="false">816659682558545</string>
+    <!-- Facebook Application ID, prefixed by 'fb'. Enables Chrome Custom tabs. -->
+    <string name="facebook_login_protocol_scheme" translatable="false">fb816659682558545</string>
+
+    <!-- Used in NavigationDrawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="error_authentication_canceled" />
+    <string name="eating_place_none">Eating place dont selected</string>
+    <string name="error_no_internet" />
+    <string name="error_no_phone">Sorry no phone</string>
+    <string name="error_no_website">Sorry no website</string>
+    <string name="error_unknown_error" />
+    <string name="toolbar_name">I\'m Hungry</string>
+
+    <!-- BOTTOM NAVIGATION VIEW -->
+    <string name="bottom_navigation_menu_mapview">Map View</string>
+    <string name="bottom_navigation_menu_listView">List View</string>
+    <string name="bottom_navigation_menu_Workmates">Workmates</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_map_fragment">Hello map fragment</string>
+    <string name="hello_list_fragment">Hello list fragment</string>
+    <string name="hello_workmates_fragment">Hello workmates fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="google_maps_api_key">AIzaSyBNaYHRy_wAQNg8c2zXiyJ3uLL_eFSFFTs</string>
+    <string name="restaurants_name">Le Zinc</string>
+    <string name="open">Open</string>
+    <string name="closed">Closed</string>
+    <string name="title_activity_restaurants_detail">RestaurantsDetailActivity</string>
+    <string name="hasn_not_decided">not decided</string>
+    <string name="is_eating_at">is eating at</string>
+    <string name="is_joining">is joining</string>
+    <string name="no_body_register_yet">no body register yet</string>
+    <string name="title_activity_mentor_chat">MentorChatActivity</string>
+    <string name="search_restaurants">search</string>
+    <string name="restaurant_call">CALL</string>
+    <string name="restaurant_like">LIKE</string>
+    <string name="restaurant_website">WEBSITE</string>
+    <string name="no_website_found">no website found</string>
+    <string name="notification_joining">is joining !</string>
+    <string name="notification_title">title</string>
+    <string name="notification_message">message</string>
+    <string name="notif">notif</string>
+    <string name="phone_dont_set">pas de phone</string>
+    <string name="warning">warning</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel_btn">cancel</string>
+</resources>
