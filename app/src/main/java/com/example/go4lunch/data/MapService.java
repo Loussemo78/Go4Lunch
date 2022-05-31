@@ -1,5 +1,6 @@
 package com.example.go4lunch.data;
 
+
 import com.example.go4lunch.BuildConfig;
 import com.example.go4lunch.models.RestaurantsInfo;
 import com.example.go4lunch.models.PlacesAutocomplete;

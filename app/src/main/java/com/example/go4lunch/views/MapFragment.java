@@ -186,6 +186,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 return false;
             }
         });
+        //observer location repository au lieu d'avoir paris
         CameraPosition resto = CameraPosition.builder().target(paris)
                 .zoom(16)
                 .bearing(0)

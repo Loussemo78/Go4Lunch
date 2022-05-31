@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //fm.beginTransaction().add(R.id.activity_main_frame_layout, fragment1 , "1").commit();
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+       // fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         configureToolBar();
 
@@ -173,30 +173,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // for ActivityCompat#requestPermissions for more details.
 
         }
-
-        fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, new CancellationToken() {
-            @Override
-            public boolean isCancellationRequested() {
-                return false;
-            }
-
-            @NonNull
-            @NotNull
-            @Override
-            public CancellationToken onCanceledRequested(@NonNull @NotNull OnTokenCanceledListener onTokenCanceledListener) {
-                Log.d("CurrentLocation", "CancelRequest");
-                return null;
-            }
-        }).addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    mLocation = location;
-                    go4LunchViewModel.loadRestaurants("" + location.getLatitude() + "," + location.getLongitude(), 300, "restaurant");
-                    configureBottomView();
-                }
-            }
-        });
+        //LOCATION REPOSITORY
+           go4LunchViewModel.getLiveDataLocation().observe(this,location -> {
+               mLocation = location;
+           });
+        configureBottomView();
 
         /*go4LunchViewModel.getAutocompleteResults().observe(this, result -> {
             predictions.addAll(result);
