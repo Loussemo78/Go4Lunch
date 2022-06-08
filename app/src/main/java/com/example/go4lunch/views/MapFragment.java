@@ -127,7 +127,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull @NotNull GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
-        LatLng paris = new LatLng(48.8566, 2.3522);
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //mediator live data , parce que  observe dans un observe
@@ -187,14 +186,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
         //observer location repository au lieu d'avoir paris
-        CameraPosition resto = CameraPosition.builder().target(paris)
-                .zoom(16)
-                .bearing(0)
-                .tilt(45)
-                .build();
 
+        //location du repository
+        go4LunchViewModel.getLiveDataLocation().observe(getViewLifecycleOwner(),location -> {
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+            CameraPosition resto = CameraPosition.builder().target(latLng)
+                    .zoom(16)
+                    .bearing(0)
+                    .tilt(45)
+                    .build();
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(resto));
+        });
         // [START_EXCLUDE silent]
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(resto));
     }
 
    /* private BitmapDescriptor bitmapDescriptorFromVector(Context context, @DrawableRes int vectorDrawableResourceId) {

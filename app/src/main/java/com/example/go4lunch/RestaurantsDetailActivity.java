@@ -88,7 +88,7 @@ public class RestaurantsDetailActivity extends AppCompatActivity implements Util
             @Override
             public void onClick(View view) {
                 restaurantDetailViewModel.getUsersToRestaurant().observe(RestaurantsDetailActivity.this, user -> {
-                    if (user.getRestaurantId().equals(detail.getResult().getDetailPlaceId())) {
+                    if (user.getRestaurantId() != null && user.getRestaurantId().equals(detail.getResult().getDetailPlaceId())) {
                         restaurantDetailViewModel.updateUserRestaurant("", "");
                     } else if (user.getRestaurantId() == null || user.getRestaurantId().equals("")) {
                         restaurantDetailViewModel.updateUserRestaurant(detail.getResult().getDetailPlaceId(), detail.getResult().getDetailName());

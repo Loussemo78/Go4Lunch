@@ -424,7 +424,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void getYourRestaurant() {
         profilViewModel.getUsersAtRestaurant().observe(this, user -> {
-                    if (user.getRestaurantId().equals(null)) {
+                    if (user.getRestaurantId() == null){
                         Toast.makeText(this, getString(R.string.eating_place_none), Toast.LENGTH_SHORT).show();
                     } else {
                         RestaurantsDetailActivity.navigate(this, user.getRestaurantId());
