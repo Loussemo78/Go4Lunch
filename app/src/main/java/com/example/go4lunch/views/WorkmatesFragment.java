@@ -53,13 +53,20 @@ public class WorkmatesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         workmatesAdapter = new WorkmatesAdapter();
         recyclerView.setAdapter(workmatesAdapter);
-        getBaseList();
+        displayUserChoice();
+        //getBaseList();
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
     }
 
     private void getBaseList() {
         workmatesViewModel.getAllWorkmates().observe(getViewLifecycleOwner(), workmatesAdapter::submitList);
     }
+
+   private void displayUserChoice(){
+        workmatesViewModel.getUsersOnRestaurant().observe(getViewLifecycleOwner(), users -> {
+            workmatesAdapter.submitList(users);
+        });
+   }
 
 
    /* public void getUserProfile() {

@@ -5,6 +5,7 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.example.go4lunch.models.RestaurantsResult;
 import com.example.go4lunch.models.User;
 
 import java.util.List;
@@ -20,6 +21,12 @@ public class UserStateItem {
     private String username;
     @NonNull
     private String urlPicture;
+
+    private RestaurantsResult chosenRestaurant;
+
+
+
+
 
     private static boolean favoris = true;
 
@@ -72,10 +79,11 @@ public class UserStateItem {
     @NonNull
     private List<User> users ;
 
-    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture) {
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture , RestaurantsResult chosenRestaurant) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
+        this.chosenRestaurant = chosenRestaurant;
     }
 
     public UserStateItem(User user){
@@ -84,7 +92,13 @@ public class UserStateItem {
         this.urlPicture = user.getUrlPicture();
     }
 
+    public RestaurantsResult getChosenRestaurant() {
+        return chosenRestaurant;
+    }
 
+    public void setChosenRestaurant(RestaurantsResult chosenRestaurant) {
+        this.chosenRestaurant = chosenRestaurant;
+    }
 
     @Override
     public boolean equals(Object o) {

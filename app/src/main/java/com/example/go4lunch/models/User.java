@@ -19,6 +19,9 @@ public class User {
     private String urlPicture ;
     private String restaurantId;
     private String restaurantName;
+    private RestaurantsResult restaurantsResult;
+
+
 
     public User(String uid, String restaurantName) {
         this.uid = uid;
@@ -115,6 +118,13 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
+    public RestaurantsResult getRestaurantsResult() {
+        return restaurantsResult;
+    }
+
+    public void setRestaurantsResult(RestaurantsResult restaurantsResult) {
+        this.restaurantsResult = restaurantsResult;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

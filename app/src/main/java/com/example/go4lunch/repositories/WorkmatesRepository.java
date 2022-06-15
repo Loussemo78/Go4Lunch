@@ -99,20 +99,6 @@ public class WorkmatesRepository {
     }
 //methode pour afficher le user courant dans la page d'accueil
 
-    public MutableLiveData<User> getUserAtFirestore() {
-        //Query collection Firebase helper
-        String uId = this.getCurrentUserUID();
-       MutableLiveData<User> user = new MutableLiveData<>();
-        this.getUsersCollection().document(uId).get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                user.setValue(documentSnapshot.toObject(User.class));
-            } else {
-                user.setValue(null);
-            }
-        });
-        return user;
-    }
-
     public MutableLiveData<LikedRestaurant> getUserLikedFirestore() {
         //Query collection Firebase helper
         String uId = this.getCurrentUserUID();

@@ -85,7 +85,7 @@ public class RestaurantDetailViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<User> getUsersToRestaurant() {
-        return workmatesRepository.getUserAtFirestore();
+        return workmatesRepository.getUserFromFirestore();
     }
 
     public MutableLiveData<LikedRestaurant> getUsersLikedRestaurant() {

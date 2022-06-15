@@ -23,7 +23,7 @@ public class ProfilViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<User>getUsersAtRestaurant(){
-        return workmatesRepository.getUserAtFirestore();
+        return workmatesRepository.getUserFromFirestore();
     }
 
 

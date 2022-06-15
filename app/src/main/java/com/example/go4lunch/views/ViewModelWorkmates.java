@@ -1,6 +1,7 @@
 package com.example.go4lunch.views;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
@@ -19,6 +20,7 @@ public class ViewModelWorkmates extends ViewModel {
 
     public ViewModelWorkmates() {
         this.repository = WorkmatesRepository.getInstance();
+
     }
 
     private LiveData<List<UserStateItem>> mapDataToViewState(LiveData<List<User>> workmates) {
@@ -41,14 +43,25 @@ public class ViewModelWorkmates extends ViewModel {
     public LiveData<List<UserStateItem>> getCurrentWorkmates(){
         return mapDataToViewState(repository.getWorkmates());
     }
-    public LiveData<User> getCurrentUserData(){
-        return repository.getUserFromFirestore();
-    }
 
     public void loadUsers(){
         listUsers = repository.getAllWorkmates();
     }
 
+    public MutableLiveData<User> getCurrentUser(){
+        return repository.getUserFromFirestore();
+    }
+    public LiveData<List<UserStateItem>>getUsersOnRestaurant(){
+        return Transformations.map(repository.getAllWorkmates(),users -> {
+            List<UserStateItem> userStateItems = new ArrayList<>();
+            for(User u : users) {
+                if (u.getRestaurantName() != null) {
+                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantsResult()));
+                }
+            }
+            return userStateItems;
+        });
+    }
     //public void setLikedRestaurantById(String restaurantId , String restaurantName){ repository.setLikedRestaurantById(restaurantId, restaurantName);}
 
     /*public void deleteLikedRestaurant(String restaurantId) {

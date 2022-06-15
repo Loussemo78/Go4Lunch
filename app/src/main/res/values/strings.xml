@@ -38,10 +38,11 @@
     <string name="closed">Closed</string>
     <string name="title_activity_restaurants_detail">RestaurantsDetailActivity</string>
     <string name="hasn_not_decided">not decided</string>
-    <string name="is_eating_at">is eating at</string>
-    <string name="is_joining">is joining</string>
+    <string name="choice">%s is going to %s today !</string>
+    <string name="someone_is_joining">%1s is joining !</string>
+    <string name="notification_no_choice">%s has not chosen any restaurant today.</string>
+    <string name="no_restaurant_selected">There\'s no restaurant selected</string>
     <string name="no_body_register_yet">no body register yet</string>
-    <string name="title_activity_mentor_chat">MentorChatActivity</string>
     <string name="search_restaurants">search</string>
     <string name="restaurant_call">CALL</string>
     <string name="restaurant_like">LIKE</string>
