@@ -19,6 +19,7 @@ public class User {
     private String urlPicture ;
     private String restaurantId;
     private String restaurantName;
+    private String mEatingAt;
     private RestaurantsResult restaurantsResult;
 
 
@@ -60,11 +61,12 @@ public class User {
     }
 
 
-    public User(String uid, String username, String urlPicture, String restaurantId) {
+    public User(String uid, String username, String urlPicture, String restaurantId , String mEatingAt) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.restaurantId = restaurantId;
+        this.mEatingAt = mEatingAt;
     }
 
     public User(String uid) {
@@ -88,6 +90,14 @@ public class User {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
+    }
+
+    public String getmEatingAt() {
+        return mEatingAt;
+    }
+
+    public void setmEatingAt(String mEatingAt) {
+        this.mEatingAt = mEatingAt;
     }
 
     public User(){

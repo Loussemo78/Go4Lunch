@@ -30,7 +30,7 @@ public class WorkmatesViewHolder extends RecyclerView.ViewHolder {
     public void updateUserItem(UserStateItem user) {
         //binding.userText.getResources().getString(R.string.is_eating_at);
 
-        //binding.userText.setText(user.getUsername());
+        binding.userText.setText(user.getUsername());
         //binding.userText.getResources().getString(R.string.hasn_not_decided);
         String url = user.getUrlPicture();
         Glide.with(binding.userPhoto)

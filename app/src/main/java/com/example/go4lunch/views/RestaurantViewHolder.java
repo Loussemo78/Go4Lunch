@@ -13,7 +13,10 @@ import com.example.go4lunch.R;
 import com.example.go4lunch.RestaurantsDetailActivity;
 import com.example.go4lunch.databinding.RestaurantItemBinding;
 import com.example.go4lunch.models.RestaurantsResult;
+import com.example.go4lunch.models.User;
 import com.example.go4lunch.utils.GeometryUtil;
+
+import java.util.Objects;
 
 
 public class RestaurantViewHolder extends RecyclerView.ViewHolder {
@@ -57,7 +60,20 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
             binding.restaurantsDistance.setText(distanceString);
         }
         binding.numberPicture.getDrawable();
-        //binding.restaurantsDistance.setText(result.getPlaceId());
+
+        int numberEatingAt = 0;
+
+        UserStateItem user = new UserStateItem();
+        if (user.getChosenRestaurant().equals(result.getPlaceId())){
+            numberEatingAt++;
+        }
+        if (numberEatingAt > 0){
+            binding.workmatesNumber.setVisibility(View.VISIBLE);
+            binding.workmatesNumber.setText(String.valueOf(numberEatingAt));
+        }else{
+            binding.workmatesNumber.setVisibility(View.INVISIBLE);
+        }
+
         // Shows a number of stars based on the restaurant's rating
         if (result.getRating() != null) {
             float numStars = binding.ratingBar.getNumStars();

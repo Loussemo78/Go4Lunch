@@ -34,8 +34,9 @@ public class UserHelper {
                                         String username,
                                         String urlPicture,
                                         String restaurantId,
+                                        String mEatingAt,
                                         ArrayList<String> restaurantLikedList) {
-        User userToCreate = new User(uid, username, urlPicture, restaurantId);
+        User userToCreate = new User(uid, username, urlPicture, restaurantId,mEatingAt);
         return UserHelper.getUsersCollection()
                 .document(uid) // Setting uID for Document
                 .set(userToCreate); // Setting object for Document
