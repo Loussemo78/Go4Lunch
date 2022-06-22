@@ -23,8 +23,7 @@ public class UserStateItem {
     private String urlPicture;
 
     private RestaurantsResult chosenRestaurant;
-
-
+    private List<UserStateItem> getUsersStateItem;
 
 
 
@@ -117,5 +116,13 @@ public class UserStateItem {
 
     public static boolean isFavoris() {
         return favoris;
+    }
+
+    public List<UserStateItem> getGetUsersStateItem() {
+        return getUsersStateItem;
+    }
+
+    public void setGetUsersStateItem(List<UserStateItem> getUsersStateItem) {
+        this.getUsersStateItem = getUsersStateItem;
     }
 }

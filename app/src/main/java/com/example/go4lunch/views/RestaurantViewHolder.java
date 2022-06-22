@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 
 
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -13,9 +14,11 @@ import com.example.go4lunch.R;
 import com.example.go4lunch.RestaurantsDetailActivity;
 import com.example.go4lunch.databinding.RestaurantItemBinding;
 import com.example.go4lunch.models.RestaurantsResult;
-import com.example.go4lunch.models.User;
+import com.example.go4lunch.repositories.WorkmatesRepository;
 import com.example.go4lunch.utils.GeometryUtil;
+import com.example.go4lunch.utils.UserHelper;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -24,6 +27,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
     private final RestaurantItemBinding binding;
     private Context context;
     public static final String DETAIL_RESTAURANT = "place_id";
+    private List<UserStateItem> userStateItemList;
 
 
 
@@ -62,11 +66,14 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         binding.numberPicture.getDrawable();
 
         int numberEatingAt = 0;
-
-        UserStateItem user = new UserStateItem();
-        if (user.getChosenRestaurant().equals(result.getPlaceId())){
-            numberEatingAt++;
+        UserHelper userHelper = new UserHelper(WorkmatesRepository.getInstance());
+        LiveData<List<UserStateItem>> usersChoiceRestaurant = userHelper.getUsersChoiceRestaurant();
+        for (int i = 0; i < Objects.requireNonNull(usersChoiceRestaurant.getValue()).size(); i++) {
+            if (usersChoiceRestaurant.getValue().get(i).getChosenRestaurant().getPlaceId().equals(result.getPlaceId())){
+                numberEatingAt++;
+            }
         }
+
         if (numberEatingAt > 0){
             binding.workmatesNumber.setVisibility(View.VISIBLE);
             binding.workmatesNumber.setText(String.valueOf(numberEatingAt));

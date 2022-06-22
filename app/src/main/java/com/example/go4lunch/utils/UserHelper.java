@@ -1,8 +1,12 @@
 package com.example.go4lunch.utils;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Transformations;
 
 import com.example.go4lunch.models.User;
+import com.example.go4lunch.repositories.WorkmatesRepository;
+import com.example.go4lunch.views.UserStateItem;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +28,29 @@ public class UserHelper {
     private static final String RESTAURANT_VICINITY = "restaurantVicinity";
     private static final String RESTAURANT_LIKED_LIST = "restaurantLikedList";
     private static final String PICTURE_URL = "user_profile_picture";
+    private  final WorkmatesRepository workmatesRepository;
 
+
+    public UserHelper() {
+
+        this.workmatesRepository = WorkmatesRepository.getInstance();
+    }
+
+    public UserHelper(WorkmatesRepository workmatesRepository) {
+        this.workmatesRepository = workmatesRepository;
+    }
+
+    public LiveData<List<UserStateItem>>getUsersChoiceRestaurant(){
+        return Transformations.map(workmatesRepository.getAllWorkmates(), users -> {
+            List<UserStateItem> userStateItems = new ArrayList<>();
+            for(User u : users) {
+                if (u.getRestaurantName() != null) {
+                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantsResult()));
+                }
+            }
+            return userStateItems;
+        });
+    }
 
     public static CollectionReference getUsersCollection() {
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);

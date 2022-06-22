@@ -51,6 +51,7 @@ public class ViewModelWorkmates extends ViewModel {
     public MutableLiveData<User> getCurrentUser(){
         return repository.getUserFromFirestore();
     }
+
     public LiveData<List<UserStateItem>>getUsersOnRestaurant(){
         return Transformations.map(repository.getAllWorkmates(),users -> {
             List<UserStateItem> userStateItems = new ArrayList<>();
@@ -62,6 +63,9 @@ public class ViewModelWorkmates extends ViewModel {
             return userStateItems;
         });
     }
+
+
+
     //public void setLikedRestaurantById(String restaurantId , String restaurantName){ repository.setLikedRestaurantById(restaurantId, restaurantName);}
 
     /*public void deleteLikedRestaurant(String restaurantId) {

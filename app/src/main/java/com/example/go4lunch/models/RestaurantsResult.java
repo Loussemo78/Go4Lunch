@@ -29,6 +29,15 @@ public class RestaurantsResult {
     private List<String> types;
     @SerializedName("vicinity")
     private String vicinity;
+    private String userChoice;
+
+    public String getUserChoice() {
+        return userChoice;
+    }
+
+    public void setUserChoice(String userChoice) {
+        this.userChoice = userChoice;
+    }
 
     private int userInterested;
 
