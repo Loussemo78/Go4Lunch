@@ -23,6 +23,7 @@ import com.example.go4lunch.repositories.Go4LunchRepository;
 import com.example.go4lunch.repositories.LocationRepository;
 import com.example.go4lunch.repositories.WorkmatesRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Go4LunchViewModel extends AndroidViewModel {
@@ -167,7 +168,17 @@ public class Go4LunchViewModel extends AndroidViewModel {
     public void onAutocompleteResultsClick() {
 
     }
-
+    public LiveData<List<UserStateItem>>getUsersChoiceRestaurant(){
+        return Transformations.map(workmatesRepository.getAllWorkmates(), users -> {
+            List<UserStateItem> userStateItems = new ArrayList<>();
+            for(User u : users) {
+                if (u.getRestaurantName() != null) {
+                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantsResult()));
+                }
+            }
+            return userStateItems;
+        });
+    }
     /*public void getPredictions(String input, String location ) {
         go4LunchRepository.getPlacesAutocomplete()
        // listPlaceAutoComplete.setValue(place);
