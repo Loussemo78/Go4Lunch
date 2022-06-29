@@ -2,9 +2,11 @@ package com.example.go4lunch.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,10 @@ import com.example.go4lunch.models.RestaurantsResult;
 import com.example.go4lunch.repositories.WorkmatesRepository;
 import com.example.go4lunch.utils.GeometryUtil;
 import com.example.go4lunch.utils.UserHelper;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +33,9 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
     private final RestaurantItemBinding binding;
     private Context context;
     public static final String DETAIL_RESTAURANT = "place_id";
+    private int number_users;
     private List<UserStateItem> userStateItemList;
+
 
 
 
@@ -40,6 +48,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         this.context = context;
         // Displays name of  restaurant
         binding.restaurantsName.setText(result.getName());
+        checkIfUser(result.getPlaceId());
 
         // Displays restaurant address
         binding.restaurantsAddress.setText(result.getVicinity());
@@ -65,6 +74,8 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         }
         binding.numberPicture.getDrawable();
 
+
+    /*    int numberEatingAt = 0;
     /*    int numberEatingAt = 0;
         UserHelper userHelper = new UserHelper(WorkmatesRepository.getInstance());
         LiveData<List<UserStateItem>> usersChoiceRestaurant = userHelper.getUsersChoiceRestaurant();
@@ -106,6 +117,33 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                 v.getContext().startActivity(intent);
             }
         });
+    }
+    private void checkIfUser(String place_id) {
+        number_users = 0;
+        UserHelper.getUsersCollection()
+                .whereEqualTo("place_id", place_id)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                number_users++;
+                            }
+                            if (number_users > 0) {
+                                binding.workmatesNumber.setVisibility(View.VISIBLE);
+                                //users.setVisibility(View.VISIBLE);
+                                String numberOfUsers = "(" + number_users + ")";
+                                binding.workmatesNumber.setText(numberOfUsers);
+                            } else {
+                                binding.workmatesNumber.setVisibility(View.INVISIBLE);
+                                //users.setVisibility(View.INVISIBLE);
+                            }
+                        } else {
+                            Log.d("manager", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
 
