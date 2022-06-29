@@ -65,21 +65,22 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         }
         binding.numberPicture.getDrawable();
 
-        int numberEatingAt = 0;
+    /*    int numberEatingAt = 0;
         UserHelper userHelper = new UserHelper(WorkmatesRepository.getInstance());
         LiveData<List<UserStateItem>> usersChoiceRestaurant = userHelper.getUsersChoiceRestaurant();
-        for (int i = 0; i < Objects.requireNonNull(usersChoiceRestaurant.getValue()).size(); i++) {
-            if (usersChoiceRestaurant.getValue().get(i).getChosenRestaurant().getPlaceId().equals(result.getPlaceId())){
+        for (int i = 0; i < usersChoiceRestaurant.getValue().size(); i++) {
+            if (usersChoiceRestaurant.getValue().get(i).getChosenRestaurant().equals(result.getPlaceId())){
                 numberEatingAt++;
             }
         }
+
 
         if (numberEatingAt > 0){
             binding.workmatesNumber.setVisibility(View.VISIBLE);
             binding.workmatesNumber.setText(String.valueOf(numberEatingAt));
         }else{
             binding.workmatesNumber.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
         // Shows a number of stars based on the restaurant's rating
         if (result.getRating() != null) {
