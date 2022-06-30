@@ -118,15 +118,15 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-    private void checkIfUser(String place_id) {
+    private void checkIfUser(String restaurantId) {
         number_users = 0;
         UserHelper.getUsersCollection()
-                .whereEqualTo("restaurantId", place_id)
+                .whereEqualTo("restaurantId", restaurantId)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                       if (task.isSuccessful()) {
+                       if (task.isComplete()) {
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                 number_users++;
                             }
