@@ -11,6 +11,7 @@ import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.go4lunch.BuildConfig;
 import com.example.go4lunch.R;
 import com.example.go4lunch.RestaurantsDetailActivity;
@@ -162,6 +163,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                     + BuildConfig.GOOGLE_MAP_API_KEY;
             Glide.with(context)
                     .load(url)
+                    //.diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .into(binding.mainPic);
         }
 
