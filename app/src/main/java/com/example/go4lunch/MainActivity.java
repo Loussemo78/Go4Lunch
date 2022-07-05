@@ -266,6 +266,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchAutoComplete.setTextColor(Color.GREEN);
         searchAutoComplete.setDropDownBackgroundResource(android.R.color.holo_blue_bright);
 
+        final ArrayAdapter<Prediction> predictionAdapter = new ArrayAdapter<Prediction>(MainActivity.this, android.R.layout.simple_spinner_item);
+        searchAutoComplete.setAdapter(predictionAdapter);
 
         searchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -273,8 +275,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 searchAutoComplete.setText(adapterView.getItemAtPosition(i).toString());
             }
         });
-        final ArrayAdapter<Prediction> predictionAdapter = new ArrayAdapter<Prediction>(MainActivity.this, android.R.layout.simple_spinner_item);
-        searchAutoComplete.setAdapter(predictionAdapter);
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -288,12 +289,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //ajouter view model de l'appel web service
                 if (newText.length() > 2) {
 
-                    go4LunchViewModel.getPredictions(newText, mLocation, 300).observe(MainActivity.this, result -> {
-                        //predictions.addAll(result.getPredictions());
+                    go4LunchViewModel.getPredictions(newText, mLocation,3000).observe(MainActivity.this, result -> {
                         predictionAdapter.clear();
                         predictionAdapter.addAll(result.getPredictions());
                         predictionAdapter.notifyDataSetChanged();
-                        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        predictionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     });
                     //   go4LunchViewModel.startRequest(newText,mLocation);
                 } else {

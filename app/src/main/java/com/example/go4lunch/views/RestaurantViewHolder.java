@@ -20,6 +20,7 @@ import com.example.go4lunch.repositories.WorkmatesRepository;
 import com.example.go4lunch.utils.GeometryUtil;
 import com.example.go4lunch.utils.UserHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -118,15 +119,15 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-    private void checkIfUser(String place_id) {
+    private void checkIfUser(String restaurantId) {
         number_users = 0;
         UserHelper.getUsersCollection()
-                .whereEqualTo("place_id", place_id)
+                .whereEqualTo("restaurantId", restaurantId)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
+                       if (task.isComplete()) {
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                 number_users++;
                             }
@@ -135,25 +136,34 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                                 //users.setVisibility(View.VISIBLE);
                                 String numberOfUsers = "(" + number_users + ")";
                                 binding.workmatesNumber.setText(numberOfUsers);
-                            } else {
+                            }else {
                                 binding.workmatesNumber.setVisibility(View.INVISIBLE);
                                 //users.setVisibility(View.INVISIBLE);
                             }
-                        } else {
-                            Log.d("manager", "Error getting documents: ", task.getException());
-                        }
+                       } else {
+                          Log.d("manager", "Error getting documents: ", task.getException());
+                       }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e("checkIfUser", e.getMessage());
+            }
+        });
+
     }
 
 
     private void loadImage(RestaurantsResult result) {
-        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="
-                + result.getPhotos().get(0).getPhotoReference()
-                + "&key="
-                + BuildConfig.GOOGLE_MAP_API_KEY;
-        Glide.with(context)
-                .load(url)
-                .into(binding.mainPic);
+        if (result != null && result.getPhotos() != null && !result.getPhotos().isEmpty()){
+            String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="
+                    + result.getPhotos().get(0).getPhotoReference()
+                    + "&key="
+                    + BuildConfig.GOOGLE_MAP_API_KEY;
+            Glide.with(context)
+                    .load(url)
+                    .into(binding.mainPic);
+        }
+
     }
 }
