@@ -163,7 +163,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                     + BuildConfig.GOOGLE_MAP_API_KEY;
             Glide.with(context)
                     .load(url)
-                    //.diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .into(binding.mainPic);
         }
 
