@@ -7,7 +7,6 @@ import android.view.View;
 
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,7 +16,6 @@ import com.example.go4lunch.R;
 import com.example.go4lunch.RestaurantsDetailActivity;
 import com.example.go4lunch.databinding.RestaurantItemBinding;
 import com.example.go4lunch.models.RestaurantsResult;
-import com.example.go4lunch.repositories.WorkmatesRepository;
 import com.example.go4lunch.utils.GeometryUtil;
 import com.example.go4lunch.utils.UserHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
