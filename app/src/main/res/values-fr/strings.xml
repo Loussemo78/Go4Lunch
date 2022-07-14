@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Go4Lunch</string>
+    <string name="facebook_application_id" translatable="false">816659682558545</string>
+    <!-- ID d'application Facebook, préfixé par 'fb'. Active les onglets personnalisés de Chrome. -->
+    <string name="facebook_login_protocol_scheme" translatable="false">fb816659682558545</string>
+
+    <!-- Utilisé dans NavigationDrawer -->
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
+    <string name="error_authentication_canceled" />
+    <string name="eating_place_none">Le lieu de restauration n\'est pas sélectionné</string>
+    <string name="error_no_internet" />
+    <string name="error_no_phone">Désolé pas de téléphone</string>
+    <string name="error_no_website">Désolé pas de site Web</string>
+    <string name="error_unknown_error" />
+    <string name="toolbar_name">J\'ai faim</string>
+
+    <!-- VUE DE NAVIGATION DU BAS -->
+    <string name="bottom_navigation_menu_mapview">Vue de la carte</string>
+    <string name="bottom_navigation_menu_listView">Vue en liste</string>
+    <string name="bottom_navigation_menu_Workmates">Collaborateurs</string>
+    <!-- À FAIRE : Supprimer ou modifier ce texte d'espace réservé -->
+    <string name="hello_map_fragment">Bonjour le fragment de carte</string>
+    <string name="hello_list_fragment">Fragment de liste Hello</string>
+    <string name="hello_workmates_fragment">Bonjour les collègues de travail</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- Chaînes utilisées pour les fragments de navigation -->
+    <string name="first_fragment_label">Premier fragment</string>
+    <string name="second_fragment_label">Deuxième fragment</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Précédent</string>
+
+    <string name="hello_first_fragment">Bonjour premier fragment</string>
+    <string name="hello_second_fragment">Bonjour deuxième fragment. Argument : %1$s</string>
+    <string name="google_maps_api_key">AIzaSyBNaYHRy_wAQNg8c2zXiyJ3uLL_eFSFFTs</string>
+    <string name="restaurants_name">Le Zinc</string>
+    <string name="open">Ouvrir</string>
+    <string name="closed">Fermé</string>
+    <string name="title_activity_restaurants_detail">RestaurantsDetailActivity</string>
+    <string name="hasn_not_decided">pas décidé</string>
+    <string name="choice">%s va à %s aujourd\'hui !</string>
+    <string name="someone_is_joining">%1s rejoint !</string>
+    <string name="notification_no_choice">%s n\'a choisi aucun restaurant aujourd'hui.</string>
+    <string name="no_restaurant_selected">Aucun restaurant sélectionné</string>
+    <string name="no_body_register_yet">aucun registre de corps pour le moment</string>
+    <string name="search_restaurants">rechercher</string>
+    <string name="restaurant_call">APPEL</string>
+    <string name="restaurant_like">LIKE</string>
+    <string name="restaurant_website">SITE WEB</string>
+    <string name="no_website_found">aucun site Web trouvé</string>
+    <string name="notification_joining">rejoint !</string>
+    <string name="notification_title">titre</string>
+    <string name="notification_message">message</string>
+    <string name="notif">notif</string>
+    <string name="phone_dont_set">pas de téléphone</string>
+    <string name="warning">avertissement</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel_btn">annuler</string>
+</resources>
