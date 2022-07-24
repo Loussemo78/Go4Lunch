@@ -95,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
          }
 
          private void onDeleteClicked(){
-             currentUser = firebaseHelper.getCurrentWorkmates();
+             currentUser = firebaseHelper.user;
              binding.settingsActivityDeleteAccount.setOnClickListener(v ->{
                  // Create a dialog window to warn the user
                  AlertDialog.Builder warningDialog = new AlertDialog.Builder(SettingsActivity.this, R.style.AlertDialogWarning);

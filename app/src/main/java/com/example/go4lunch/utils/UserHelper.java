@@ -56,6 +56,9 @@ public class UserHelper {
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
     }
 
+    public  CollectionReference getCollectionUsers() {
+        return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
+    }
     public static Task<Void> createUser(String uid,
                                         String username,
                                         String urlPicture,
@@ -111,6 +114,11 @@ public class UserHelper {
     public static Task<Void> deleteUser(String uid) {
         return UserHelper.getUsersCollection().document(uid).delete();
     }
+
+    public  Task<DocumentSnapshot> getCurrentUsers(String id) {
+        return UserHelper.getUsersCollection().document(id).get();
+    }
+
 
     public FirebaseUser getCurrentWorkmate() {
         return FirebaseAuth.getInstance().getCurrentUser();
