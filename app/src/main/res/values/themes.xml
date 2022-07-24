@@ -49,4 +49,8 @@
     <style name="Theme.Go4Lunch.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Go4Lunch.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- AlertDialog to delete account -->
+    <style name="AlertDialogWarning" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
 </resources>

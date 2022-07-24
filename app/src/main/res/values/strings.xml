@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Go4Lunch</string>
-    <string name="facebook_application_id" translatable="false">816659682558545</string>
+    <string name="facebook_application_id">1509262882869897</string>
     <!-- Facebook Application ID, prefixed by 'fb'. Enables Chrome Custom tabs. -->
-    <string name="facebook_login_protocol_scheme" translatable="false">fb816659682558545</string>
+    <string name="facebook_login_protocol_scheme">fb1509262882869897</string>
 
     <!-- Used in NavigationDrawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -38,9 +38,9 @@
     <string name="closed">Closed</string>
     <string name="title_activity_restaurants_detail">RestaurantsDetailActivity</string>
     <string name="hasn_not_decided">not decided</string>
-    <string name="choice">%s is going to %s today !</string>
+    <!--<string name="choice">%s is going to %s today !</string>-->
     <string name="someone_is_joining">%1s is joining !</string>
-    <string name="notification_no_choice">%s has not chosen any restaurant today.</string>
+    <!--<string name="notification_no_choice">%s has not chosen any restaurant today.</string>-->
     <string name="no_restaurant_selected">There\'s no restaurant selected</string>
     <string name="no_body_register_yet">no body register yet</string>
     <string name="search_restaurants">search</string>
@@ -48,6 +48,8 @@
     <string name="restaurant_like">LIKE</string>
     <string name="restaurant_website">WEBSITE</string>
     <string name="no_website_found">no website found</string>
+    <string name="notification_subscription" translatable="false">Notification subscription</string>
+    <string name="delete_account" translatable="false">Delete my account!</string>
     <string name="notification_joining">is joining !</string>
     <string name="notification_title">title</string>
     <string name="notification_message">message</string>
@@ -56,4 +58,10 @@
     <string name="warning">warning</string>
     <string name="ok_btn">OK</string>
     <string name="cancel_btn">cancel</string>
+    <string name="notification_subscribed">notification souscrite</string>
+    <string name="notification_unsubscribe_failed">echec souscription</string>
+    <string name="notification_unsubscribed">non souscrit</string>
+    <string name="ok">oui</string>
+    <string name="cancel">annuler</string>
+    <string name="warning_delete">suppression warning</string>
 </resources>

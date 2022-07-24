@@ -7,14 +7,13 @@ import androidx.annotation.NonNull;
 import com.example.go4lunch.RestaurantsDetailActivity;
 import com.example.go4lunch.models.LikedRestaurant;
 import com.example.go4lunch.models.User;
-import com.example.go4lunch.repositories.WorkmatesRepository;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -23,6 +22,7 @@ public class FirebaseHelper {
     private static final String TAG = "firebasehelper";
     public static final String RESTAURANT_ID = "restaurantId";
     public static final String RESTAURANT_NAME = "restaurantName";
+    public static final String COLLECTION_NAME = "users";
     public static final String USER_ID = "uid";
 
 
@@ -33,12 +33,23 @@ public class FirebaseHelper {
         return sFirebaseHelper;
     }
 
+    public static CollectionReference getWorkmatesCollection() {
+        return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
+    }
+
+    public static Task<DocumentSnapshot> getCurrentWorkmate(String id) {
+        return getWorkmatesCollection().document(id).get();
+    }
+
+    public  Task<Void> deleteWorkmate(String id) {
+        return getWorkmatesCollection().document(id).delete();
+    }
+
     public FirebaseFirestore getDb() {
         return db;
     }
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-   // private final FirebaseFirestore db2 = FirebaseFirestore.getInstance();
     public final CollectionReference usersRef = db.collection("users");
     public final CollectionReference likedRef = db.collection("likedRestaurants");
     public FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -52,15 +63,12 @@ public class FirebaseHelper {
     }
 
 
-    //create method query collection cle valeur
-
-    /*public Task<QuerySnapshot> getAllUsers() {
-        return usersRef.get();
-    }*/
 
     public CollectionReference getAllUsers(){
         return usersRef;
     }
+
+
 
     public void setUsersFromFirestore(String restaurantId, String restaurantName) {
         String uid = user.getUid();
@@ -112,11 +120,6 @@ public class FirebaseHelper {
     public void updateUserRestaurant(User mUser) {
         usersRef.document(user.getUid()).update(RESTAURANT_ID, mUser.getRestaurantId());
         usersRef.document(user.getUid()).update(RESTAURANT_NAME, mUser.getRestaurantName());
-        //usersRef.document(user.getUid()).update(USER_ID, mUser.getUid());
-        //usersRef.document(user.getUid()).update(RestaurantsDetailActivity.RESTAURANT_ID, mUser.getRestaurantId());
-        //ajouter une task
-        //usersRef.document().collection("users").document(restaurantId).delete();
-        // return usersRef.whereEqualTo(RestaurantsDetailActivity.RESTAURANT_ID,restaurantId).delete
     }
 
 
@@ -125,7 +128,6 @@ public class FirebaseHelper {
     }
 
     public Task<Void> deleteLikedRestaurant() {
-        //return likedRef.document(user.getUid()).collection(WorkmatesRepository.COLLECTION_LIKE_RESTAURANT).document(restaurantId).delete();
         return likedRef.document(user.getUid()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -145,8 +147,10 @@ public class FirebaseHelper {
     }
 
 
-    protected FirebaseUser getCurrentWorkmates() {
-        //Log.d(TAG, "getCurrentUser: CurrentUser logged in Firebase");
+    public FirebaseUser getCurrentWorkmates() {
         return FirebaseAuth.getInstance().getCurrentUser();
     }
+
+
+
 }

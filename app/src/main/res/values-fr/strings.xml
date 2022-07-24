@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Go4Lunch</string>
-    <string name="facebook_application_id" translatable="false">816659682558545</string>
+    <string name="facebook_application_id">816659682558545</string>
     <!-- ID d'application Facebook, préfixé par 'fb'. Active les onglets personnalisés de Chrome. -->
-    <string name="facebook_login_protocol_scheme" translatable="false">fb816659682558545</string>
+    <string name="facebook_login_protocol_scheme">fb816659682558545</string>
+
 
     <!-- Utilisé dans NavigationDrawer -->
     <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
@@ -38,15 +39,17 @@
     <string name="closed">Fermé</string>
     <string name="title_activity_restaurants_detail">RestaurantsDetailActivity</string>
     <string name="hasn_not_decided">pas décidé</string>
-    <string name="choice">%s va à %s aujourd\'hui !</string>
+    <!--<string name="choice">%s va à %s aujourd\'hui !</string>-->
     <string name="someone_is_joining">%1s rejoint !</string>
-    <string name="notification_no_choice">%s n\'a choisi aucun restaurant aujourd'hui.</string>
+    <!--<string name="notification_no_choice">%s n\'a choisi aucun restaurant aujourd'hui.</string>-->
     <string name="no_restaurant_selected">Aucun restaurant sélectionné</string>
     <string name="no_body_register_yet">aucun registre de corps pour le moment</string>
     <string name="search_restaurants">rechercher</string>
     <string name="restaurant_call">APPEL</string>
     <string name="restaurant_like">LIKE</string>
     <string name="restaurant_website">SITE WEB</string>
+    <string name="notification_subscription" translatable="false">Notification subscription</string>
+    <string name="delete_account" translatable="false">Supprimer mon compte!</string>
     <string name="no_website_found">aucun site Web trouvé</string>
     <string name="notification_joining">rejoint !</string>
     <string name="notification_title">titre</string>

@@ -19,6 +19,8 @@ public class User {
     private String urlPicture ;
     private String restaurantId;
     private String restaurantName;
+    @Nullable
+    private String restaurantDate;
     private String mEatingAt;
     private RestaurantsResult restaurantsResult;
 
@@ -128,6 +130,9 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
+    @Nullable
+    public String getRestaurantDate() { return restaurantDate; }
+
     public RestaurantsResult getRestaurantsResult() {
         return restaurantsResult;
     }
@@ -150,7 +155,5 @@ public class User {
     }
 
 
-    /*public static String  getRestaurant(){
-        return getRestaurant();
-    }*/
+
 }

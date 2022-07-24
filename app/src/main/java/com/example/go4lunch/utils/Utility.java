@@ -2,6 +2,7 @@ package com.example.go4lunch.utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 
@@ -9,15 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.go4lunch.SettingsActivity;
 import com.example.go4lunch.models.User;
 import com.example.go4lunch.repositories.UserRepository;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class Utility {
     private static final String PREFS = "com.example.go4lunch";
@@ -31,6 +37,11 @@ public class Utility {
 
     public Utility(OnClickButtonAlertDialog onClickButtonAlertDialog) {
         this.onClickButtonAlertDialog = onClickButtonAlertDialog;
+    }
+
+
+    public Utility(){
+
     }
     public interface OnClickButtonAlertDialog {
         void positiveButtonDialogClicked(DialogInterface dialog, int dialogIdForSwitch);
@@ -119,5 +130,20 @@ public class Utility {
         dialogBuilder.setBackground(ActivityCompat.getDrawable(context, dialogDrawableBackground));
         dialogBuilder.show();
     }
+
+    // Get the date of the day
+    public  String getTodayDate() {
+        Calendar calendar = Calendar.getInstance();
+        // Create a SimpleDateFormat
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        // Get today date
+        return sdf.format(calendar.getTime());
+    }
+
+    public void showSnackbar(View view, String text) {
+        Snackbar snackbar = Snackbar.make(view, text, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+    }
+
 
 }

@@ -17,9 +17,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -32,7 +32,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,12 +41,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.go4lunch.databinding.ActivityMainBinding;
 import com.example.go4lunch.models.Prediction;
 import com.example.go4lunch.repositories.UserRepository;
+import com.example.go4lunch.utils.Utility;
 import com.example.go4lunch.views.AutocompleteAdapter;
 import com.example.go4lunch.views.Go4LunchViewModel;
 import com.example.go4lunch.views.ProfilViewModel;
@@ -56,18 +55,12 @@ import com.example.go4lunch.views.ListFragment;
 import com.example.go4lunch.views.MapFragment;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.CancellationToken;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -280,8 +273,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //startActivity
-                return false;
+                //getYourRestaurant();
+                return true;
             }
 
             @Override
@@ -346,6 +339,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getYourRestaurant();
                 break;
             case R.id.activity_main_drawer_settings:
+                startSettingsActivity(this);
                 break;
             case R.id.activity_main_drawer_logout:
                 AuthUI.getInstance()
@@ -361,33 +355,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-   /* private void getAndShowSearchedRestaurants(String search){
-
-        placesMgr.executeHttpRequestToFindSearchedRestaurants(search, new DisposableObserver<PlacesAutocomplete>(){
-
-            @Override
-            public void onNext(PlacesAutocomplete places) {
-
-                String [] placesIds = new String[places.getPredictions().size()];
-
-                for (int i = 0; i<places.getPredictions().size(); i++){
-                    placesIds[i] = places.getPredictions().get(i).getPlaceId();
-
-                    placesMgr.executeHttpRequestToGetRestaurantDetails(placesIds[i], new DisposableObserver<PlacesAutocomplete>() {
-                        @Override
-                        public void onNext(PlacesAPI placesAPI) {
-                            showRestaurantOnMapWithMarker(placesAPI.getResult());
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {}
-
-                        @Override
-                        public void onComplete() {}
-                    });
-                }
-                setRestaurantsList(placesIds);
-            }*/
+    private void startSettingsActivity(Context context) {
+        Intent intent = new Intent(context, SettingsActivity.class);
+        context.startActivity(intent);
+    }
 
 
     // 1 - Configure Toolbar
