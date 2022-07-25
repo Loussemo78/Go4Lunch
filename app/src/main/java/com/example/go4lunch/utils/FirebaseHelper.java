@@ -22,6 +22,7 @@ public class FirebaseHelper {
     private static final String TAG = "firebasehelper";
     public static final String RESTAURANT_ID = "restaurantId";
     public static final String RESTAURANT_NAME = "restaurantName";
+    public static final String FIELD_USERNAME = "username";
     public static final String COLLECTION_NAME = "users";
     public static final String USER_ID = "uid";
 

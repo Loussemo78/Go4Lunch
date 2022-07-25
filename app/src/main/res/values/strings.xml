@@ -58,10 +58,14 @@
     <string name="warning">warning</string>
     <string name="ok_btn">OK</string>
     <string name="cancel_btn">cancel</string>
-    <string name="notification_subscribed">notification souscrite</string>
-    <string name="notification_unsubscribe_failed">echec souscription</string>
-    <string name="notification_unsubscribed">non souscrit</string>
-    <string name="ok">oui</string>
-    <string name="cancel">annuler</string>
-    <string name="warning_delete">suppression warning</string>
+    <string name="notification_subscribed" translatable="false">notification souscrite</string>
+    <string name="notification_unsubscribe_failed" translatable="false">echec souscription</string>
+    <string name="notification_unsubscribed" translatable="false">non souscrit</string>
+    <string name="ok" translatable="false">oui</string>
+    <string name="cancel" translatable="false">annuler</string>
+    <string name="warning_delete" translatable="false">suppression warning</string>
+    <string name="notification_alone" translatable="false">alone</string>
+    <string name="notification" translatable="false">get notification</string>
+    <string name="default_notification_channel_id" translatable="false">channelId_default</string>
+    <string name="message_from_firebase" translatable="false">Firebase messages</string>
 </resources>
