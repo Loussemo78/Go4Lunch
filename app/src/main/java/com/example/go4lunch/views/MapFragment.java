@@ -101,22 +101,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mapView = (MapView) view.findViewById(R.id.map);
         //workmatesViewModel = new ViewModelProvider(requireActivity()).get(WorkmatesViewModel.class);
         go4LunchViewModel = new ViewModelProvider(requireActivity()).get(Go4LunchViewModel.class);
-       /* go4LunchViewModel.getRestaurants().observe(getViewLifecycleOwner(), listRestaurant -> {
-            listRestaurants.clear();
-            listRestaurants.addAll(listRestaurant.getResults());
-            go4LunchViewModel.getAllUsers().observe(getViewLifecycleOwner(), workmates -> {
-                for (int i = 0, listRestaurantsSize = listRestaurants.size(); i < listRestaurantsSize; i++) {
-                    RestaurantsResult result = listRestaurants.get(i);
-                    int userInterested = 0;
-                    for (User u : workmates) {
-                        if (ObjectsCompat.equals(u.getRestaurantId(),result.getPlaceId())) {
-                            userInterested++;
-                        }
-                    }
-                    listRestaurants.get(i).setUserInterested(userInterested);
-                }
-            });
-        });**/
         if (mapView != null) {
             mapView.onCreate(null);
             mapView.onResume();
@@ -144,35 +128,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         .title(result.getName()));
                 marker.setTag(result);
             }
-
-           /* go4LunchViewModel.getAllUsers().observe(getViewLifecycleOwner(), workmates -> {
-                for (int i = 0, listRestaurantsSize = listRestaurants.size(); i < listRestaurantsSize; i++) {
-                    RestaurantsResult result = listRestaurants.get(i);
-                    int userInterested = 0;
-                    for (User u : workmates) {
-                        if (ObjectsCompat.equals(u.getRestaurantId(),result.getPlaceId())) {
-                            userInterested++;
-                        }
-                    }
-                    listRestaurants.get(i).setUserInterested(userInterested);
-
-                }
-
-            });*/
         });
-
-       /* for (RestaurantsResult result : listRestaurants) {
-            Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(result.getGeometry().getLocation().getLat(),
-                    result.getGeometry()
-                            .getLocation()
-                            .getLng()))
-                    .icon(setMarkerOnMap(result.getUserInterested()))
-                    //.icon(result.getUserInterested() > 0 ? BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant_marker_green) : BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant_marker_orange))
-                    .title(result.getName()));
-            marker.setTag(result);
-
-
-        }*/
 
         googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override

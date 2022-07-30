@@ -2,6 +2,7 @@ package com.example.go4lunch.views;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -13,13 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.go4lunch.databinding.FragmentWorkMatesBinding;
+import com.example.go4lunch.utils.Utility;
 
 
-public class WorkmatesFragment extends Fragment {
+public class WorkmatesFragment extends Fragment  {
     private ViewModelWorkmates workmatesViewModel;
     private FragmentWorkMatesBinding binding;
     private RecyclerView recyclerView;
     private WorkmatesAdapter workmatesAdapter;
+    private Utility utility = new Utility();
 
 
     public WorkmatesFragment() {
@@ -54,7 +57,6 @@ public class WorkmatesFragment extends Fragment {
         workmatesAdapter = new WorkmatesAdapter();
         recyclerView.setAdapter(workmatesAdapter);
         displayUserChoice();
-        //getBaseList();
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
     }
 
@@ -67,6 +69,20 @@ public class WorkmatesFragment extends Fragment {
             workmatesAdapter.submitList(users);
         });
    }
+
+//    @Override
+//    public void onWorkmateClick(@NonNull String placeId) {
+//        utility.startDetailsRestaurantActivity(getActivity(), placeId);
+//    }
+
+//    @Override
+//    public void onClickItem(String restaurantId, int position) {
+//        UserStateItem workmate = workmatesAdapter.getCurrentList().get(position);
+//        if (workmate.getRestaurantName() != null){
+//            utility.startDetailsRestaurantActivity(getActivity(),restaurantId);
+//        }
+//
+//    }
 
 
    /* public void getUserProfile() {

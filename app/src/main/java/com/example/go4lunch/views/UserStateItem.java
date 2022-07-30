@@ -22,6 +22,19 @@ public class UserStateItem {
     @NonNull
     private String urlPicture;
 
+
+
+    private String restaurantName;
+
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, String restaurantName, @NonNull RestaurantsResult chosenRestaurant) {
+        this.uid = uid;
+        this.username = username;
+        this.urlPicture = urlPicture;
+        this.restaurantName = restaurantName;
+        this.chosenRestaurant = chosenRestaurant;
+    }
+
+    @NonNull
     private RestaurantsResult chosenRestaurant;
     private List<UserStateItem> getUsersStateItem;
 
@@ -78,19 +91,21 @@ public class UserStateItem {
     @NonNull
     private List<User> users ;
 
-    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture , RestaurantsResult chosenRestaurant) {
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture , @NonNull String restaurantName) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
-        this.chosenRestaurant = chosenRestaurant;
+        this.restaurantName = restaurantName;
     }
 
     public UserStateItem(User user){
         this.uid = user.getUid();
         this.username = user.getUsername();
         this.urlPicture = user.getUrlPicture();
+
     }
 
+    @NonNull
     public RestaurantsResult getChosenRestaurant() {
         return chosenRestaurant;
     }
@@ -124,5 +139,13 @@ public class UserStateItem {
 
     public void setGetUsersStateItem(List<UserStateItem> getUsersStateItem) {
         this.getUsersStateItem = getUsersStateItem;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }

@@ -7,15 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.go4lunch.databinding.FragmentItemUserBinding;
-
-
+import com.example.go4lunch.models.RestaurantsResult;
 
 
 public class WorkmatesAdapter extends ListAdapter <UserStateItem, WorkmatesViewHolder>{
 
 
 
-    public WorkmatesAdapter() { super(new WorkmatesViewHolder.ListRestaurantItemCallback()); }
+
+    public WorkmatesAdapter() {
+        super(new WorkmatesViewHolder.ListRestaurantItemCallback());
+    }
 
     @NonNull
     @Override

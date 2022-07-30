@@ -52,13 +52,7 @@ public class WorkmatesRepository {
                 listOfWorkmates.setValue(null);
             }
         });
-        /*.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //handle error
-                listOfWorkmates.postValue(null);
-            }
-        });*/
+
         return listOfWorkmates;
     }
 

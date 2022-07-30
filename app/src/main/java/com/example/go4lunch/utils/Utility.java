@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.go4lunch.RestaurantsDetailActivity;
 import com.example.go4lunch.SettingsActivity;
 import com.example.go4lunch.models.User;
 import com.example.go4lunch.repositories.UserRepository;
@@ -30,6 +31,7 @@ public class Utility {
     private static final String LOCALE_KEY = "locale";
     private static final String PREFS_LIKES = "likes";
     private static final String PREFS_TOGGLE = "toggle";
+    private static final String KEY_ID = "key_id";
     private final Gson gson = new Gson();
     private static volatile User instance;
     private OnClickButtonAlertDialog onClickButtonAlertDialog;
@@ -145,5 +147,11 @@ public class Utility {
         snackbar.show();
     }
 
+
+    public void startDetailsRestaurantActivity(Context context, String id) {
+        Intent intent = new Intent(context, RestaurantsDetailActivity.class);
+        intent.putExtra(KEY_ID, id);
+        context.startActivity(intent);
+    }
 
 }

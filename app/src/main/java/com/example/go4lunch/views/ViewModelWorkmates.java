@@ -57,7 +57,7 @@ public class ViewModelWorkmates extends ViewModel {
             List<UserStateItem> userStateItems = new ArrayList<>();
             for(User u : users) {
                 if (u.getRestaurantName() != null) {
-                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantsResult()));
+                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantName(),u.getRestaurantsResult()));
                 }
             }
             return userStateItems;

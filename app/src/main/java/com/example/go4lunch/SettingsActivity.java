@@ -38,8 +38,9 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        constraintLayout = (ConstraintLayout) binding.settingsActivityLayout.getRootView();
+
         configureToolbar();
+        //constraintLayout = (ConstraintLayout) binding.settingsActivityLayout.getRootView();
         prefs = new LunchPreferences(this);
         boolean boxIsChecked = prefs.getNotificationState();
         if (boxIsChecked) {

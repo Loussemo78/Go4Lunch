@@ -29,6 +29,7 @@ public class RestaurantsResult {
     private List<String> types;
     @SerializedName("vicinity")
     private String vicinity;
+
     private String userChoice;
 
     public String getUserChoice() {
