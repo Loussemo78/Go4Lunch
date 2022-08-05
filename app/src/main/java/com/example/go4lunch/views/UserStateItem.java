@@ -22,16 +22,29 @@ public class UserStateItem {
     @NonNull
     private String urlPicture;
 
-
-
     private String restaurantName;
 
-    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, String restaurantName, @NonNull RestaurantsResult chosenRestaurant) {
+    private Boolean isEatingAt;
+
+    private String restaurantId;
+
+    private Object RestaurantChoice;
+
+    public Object getRestaurantChoice() {
+        return RestaurantChoice;
+    }
+
+    public void setRestaurantChoice(Object restaurantChoice) {
+        RestaurantChoice = restaurantChoice;
+    }
+
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, String restaurantName, String restaurantId, Boolean isEatingAt) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
+        this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
-        this.chosenRestaurant = chosenRestaurant;
+        this.isEatingAt = isEatingAt;
     }
 
     @NonNull
@@ -45,10 +58,11 @@ public class UserStateItem {
     public UserStateItem() {
     }
 
-    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, @NonNull Boolean isRestoFavoris) {
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, @NonNull Boolean isEatingAt) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
+        this.isEatingAt = isEatingAt;
     }
 
     @NonNull
@@ -91,11 +105,12 @@ public class UserStateItem {
     @NonNull
     private List<User> users ;
 
-    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture , @NonNull String restaurantName) {
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture , @NonNull String restaurantName,Boolean isEatingAt) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.restaurantName = restaurantName;
+        this.isEatingAt = isEatingAt;
     }
 
     public UserStateItem(User user){
@@ -148,4 +163,22 @@ public class UserStateItem {
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
     }
+
+    @NonNull
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(@NonNull String restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public Boolean getEatingAt() {
+        return isEatingAt;
+    }
+
+    public void setEatingAt(Boolean eatingAt) {
+        isEatingAt = eatingAt;
+    }
+
 }

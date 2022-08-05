@@ -5,9 +5,6 @@ import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.example.go4lunch.views.UserStateItem;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +18,7 @@ public class User {
     private String restaurantName;
     @Nullable
     private String restaurantDate;
-    private String mEatingAt;
+    private Boolean isEatingAt;
     private RestaurantsResult restaurantsResult;
 
 
@@ -63,12 +60,12 @@ public class User {
     }
 
 
-    public User(String uid, String username, String urlPicture, String restaurantId , String mEatingAt) {
+    public User(String uid, String username, String urlPicture, String restaurantId , Boolean isEatingAt) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.restaurantId = restaurantId;
-        this.mEatingAt = mEatingAt;
+        this.isEatingAt = isEatingAt;
     }
 
     public User(String uid) {
@@ -94,12 +91,12 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
-    public String getmEatingAt() {
-        return mEatingAt;
+    public Boolean getIsEatingAt() {
+        return isEatingAt;
     }
 
-    public void setmEatingAt(String mEatingAt) {
-        this.mEatingAt = mEatingAt;
+    public void setIsEatingAt(Boolean isEatingAt) {
+        this.isEatingAt = isEatingAt;
     }
 
     public User(){

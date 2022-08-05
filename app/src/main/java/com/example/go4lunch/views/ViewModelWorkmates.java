@@ -56,15 +56,17 @@ public class ViewModelWorkmates extends ViewModel {
         return Transformations.map(repository.getAllWorkmates(),users -> {
             List<UserStateItem> userStateItems = new ArrayList<>();
             for(User u : users) {
-                if (u.getRestaurantName() != null) {
-                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantName(),u.getRestaurantsResult()));
+                if (u.getRestaurantId() != null) {
+                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(), u.getRestaurantName(),u.getIsEatingAt()));
                 }
             }
             return userStateItems;
         });
     }
 
-
+    public MutableLiveData<User>getUsersAtRestaurant(){
+        return repository.getUserFromFirestore();
+    }
 
     //public void setLikedRestaurantById(String restaurantId , String restaurantName){ repository.setLikedRestaurantById(restaurantId, restaurantName);}
 

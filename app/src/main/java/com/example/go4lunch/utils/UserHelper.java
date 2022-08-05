@@ -45,7 +45,7 @@ public class UserHelper {
             List<UserStateItem> userStateItems = new ArrayList<>();
             for(User u : users) {
                 if (u.getRestaurantName() != null) {
-                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getRestaurantName()));
+                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getIsEatingAt()));
                 }
             }
             return userStateItems;
@@ -63,7 +63,7 @@ public class UserHelper {
                                         String username,
                                         String urlPicture,
                                         String restaurantId,
-                                        String mEatingAt,
+                                        Boolean mEatingAt,
                                         ArrayList<String> restaurantLikedList) {
         User userToCreate = new User(uid, username, urlPicture, restaurantId,mEatingAt);
         return UserHelper.getUsersCollection()

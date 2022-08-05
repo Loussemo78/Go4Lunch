@@ -150,9 +150,7 @@ public class WorkmatesRepository {
         // String uId = this.getCurrentUserUID();
     }
 
-
-
-
+    
     public void setLikedRestaurantById(String placeId , String restaurantName) {
         mFirebaseHelper.setLikedRestaurantById(placeId , restaurantName);
     }

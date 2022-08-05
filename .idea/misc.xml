@@ -38,11 +38,17 @@
         <entry key="..\:/Users/mfoundol/AndroidStudioProjects/Go4Lunch/app/src/main/res/menu/details_navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mfoundol/AndroidStudioProjects/Go4Lunch/app/src/main/res/menu/menu.xml" value="0.22037037037037038" />
         <entry key="..\:/Users/mfoundol/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_main_frame_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_main_nav_header.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_setting.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_settings.xml" value="0.264" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/content_maps.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/fragment_item_user.xml" value="0.28802083333333334" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/fragment_list.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/fragment_map.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/fragment_work_mates.xml" value="0.28802083333333334" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/item_autocomplete.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/restaurant_item.xml" value="0.32407407407407407" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/search_item.xml" value="0.22826086956521738" />
