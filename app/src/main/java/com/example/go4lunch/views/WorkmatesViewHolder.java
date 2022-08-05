@@ -2,6 +2,7 @@ package com.example.go4lunch.views;
 
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -41,10 +42,12 @@ public class WorkmatesViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 if (user.getEatingAt() != null) {
                     Intent intent = new Intent(v.getContext(), RestaurantsDetailActivity.class);
-                    RestaurantsResult restaurantsResult = (RestaurantsResult) user.getRestaurantChoice();
-                    String result = restaurantsResult.getPlaceId();
-                    intent.putExtra(DETAIL_RESTAURANT, result);
-                    v.getContext().startActivity(intent);
+                    if (!TextUtils.isEmpty(user.getRestaurantId()))
+                    {
+                        String result = user.getRestaurantId();
+                        intent.putExtra(DETAIL_RESTAURANT, result);
+                        v.getContext().startActivity(intent);
+                    }
                 }
             }
         });
