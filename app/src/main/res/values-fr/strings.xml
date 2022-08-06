@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Go4Lunch</string>
-    <string name="facebook_application_id">816659682558545</string>
+    <string name="facebook_application_id" translatable="false">1001282337213432</string>
     <!-- ID d'application Facebook, préfixé par 'fb'. Active les onglets personnalisés de Chrome. -->
-    <string name="facebook_login_protocol_scheme">fb816659682558545</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1001282337213432</string>
 
 
     <!-- Utilisé dans NavigationDrawer -->
