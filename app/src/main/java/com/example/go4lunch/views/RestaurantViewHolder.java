@@ -18,6 +18,7 @@ import com.example.go4lunch.databinding.RestaurantItemBinding;
 import com.example.go4lunch.models.RestaurantsResult;
 import com.example.go4lunch.utils.GeometryUtil;
 import com.example.go4lunch.utils.UserHelper;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -37,11 +38,9 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
     private List<UserStateItem> userStateItemList;
 
 
-
-
-    public RestaurantViewHolder( RestaurantItemBinding restaurantItemBinding) {
+    public RestaurantViewHolder(RestaurantItemBinding restaurantItemBinding) {
         super(restaurantItemBinding.getRoot());
-          this.binding = restaurantItemBinding;
+        this.binding = restaurantItemBinding;
     }
 
     public void amendWithData(RestaurantsResult result, Context context) {
@@ -64,34 +63,18 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
             }
         }
         // Displays distance
-        double distance = GeometryUtil.calculateDistance(context, result.getGeometry().getLocation().getLng(), result.getGeometry().getLocation().getLat());
-        int distanceInMeters = (int) distance;
-        if (distanceInMeters > 999) {
-            binding.restaurantsDistance.setText(GeometryUtil.getString1000Less(distance));
+        double distanceDouble = GeometryUtil.calculateDistance(context, result.getGeometry().getLocation().getLng(), result.getGeometry().getLocation().getLat());
+        String distanceString;
+        Double convertData = distanceDouble / 1000;
+        //int distanceInMeters = (int) distance;
+        if (distanceDouble > 900.0) {
+            distanceString = String.valueOf(GeometryUtil.roundOneDecimal(convertData)+"km");
+            binding.restaurantsDistance.setText(distanceString);
         } else {
-            String distanceString = distanceInMeters + " m";
+             distanceString = String.valueOf(Math.round(convertData) + "m");
             binding.restaurantsDistance.setText(distanceString);
         }
         binding.numberPicture.getDrawable();
-
-
-    /*    int numberEatingAt = 0;
-    /*    int numberEatingAt = 0;
-        UserHelper userHelper = new UserHelper(WorkmatesRepository.getInstance());
-        LiveData<List<UserStateItem>> usersChoiceRestaurant = userHelper.getUsersChoiceRestaurant();
-        for (int i = 0; i < usersChoiceRestaurant.getValue().size(); i++) {
-            if (usersChoiceRestaurant.getValue().get(i).getChosenRestaurant().equals(result.getPlaceId())){
-                numberEatingAt++;
-            }
-        }
-
-
-        if (numberEatingAt > 0){
-            binding.workmatesNumber.setVisibility(View.VISIBLE);
-            binding.workmatesNumber.setText(String.valueOf(numberEatingAt));
-        }else{
-            binding.workmatesNumber.setVisibility(View.INVISIBLE);
-        }*/
 
         // Shows a number of stars based on the restaurant's rating
         if (result.getRating() != null) {
@@ -113,11 +96,12 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), RestaurantsDetailActivity.class);
                 String img = result.getPlaceId();
-                intent.putExtra( DETAIL_RESTAURANT, img );
+                intent.putExtra(DETAIL_RESTAURANT, img);
                 v.getContext().startActivity(intent);
             }
         });
     }
+
     private void checkIfUser(String restaurantId) {
         number_users = 0;
         UserHelper.getUsersCollection()
@@ -126,7 +110,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                       if (task.isComplete()) {
+                        if (task.isComplete()) {
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                 number_users++;
                             }
@@ -135,13 +119,13 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                                 //users.setVisibility(View.VISIBLE);
                                 String numberOfUsers = "(" + number_users + ")";
                                 binding.workmatesNumber.setText(numberOfUsers);
-                            }else {
+                            } else {
                                 binding.workmatesNumber.setVisibility(View.INVISIBLE);
                                 //users.setVisibility(View.INVISIBLE);
                             }
-                       } else {
-                          Log.d("manager", "Error getting documents: ", task.getException());
-                       }
+                        } else {
+                            Log.d("manager", "Error getting documents: ", task.getException());
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -154,7 +138,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
 
 
     private void loadImage(RestaurantsResult result) {
-        if (result != null && result.getPhotos() != null && !result.getPhotos().isEmpty()){
+        if (result != null && result.getPhotos() != null && !result.getPhotos().isEmpty()) {
             String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="
                     + result.getPhotos().get(0).getPhotoReference()
                     + "&key="
