@@ -78,13 +78,14 @@ public class LoginActivity extends AppCompatActivity {
         //setUpListeners();
 
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = auth.getCurrentUser();
-        updateUI(currentUser);
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = auth.getCurrentUser();
+//        updateUI(currentUser);
+//    }
+
     private void setUpListeners() {
         if (userRepository.isCurrentUserLogged()) {
             startSignInActivity();
@@ -128,8 +129,6 @@ public class LoginActivity extends AppCompatActivity {
                 RC_SIGN_IN);
     }
 
-    private void updateLoginButton() {
-    }
 
 
     private void handleResponseAfterSignIn(int requestCode, int resultCode, Intent data) {

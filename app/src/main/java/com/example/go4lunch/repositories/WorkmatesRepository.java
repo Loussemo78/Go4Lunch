@@ -82,13 +82,13 @@ public class WorkmatesRepository {
     public MutableLiveData<User> getUserFromFirestore() {
         String uId = this.getCurrentUserUID();
         MutableLiveData<User> user = new MutableLiveData<>();
-//        this.getUsersCollection().document(uId).get().addOnSuccessListener(documentSnapshot -> {
-//            if (documentSnapshot.exists()) {
-//                user.setValue(documentSnapshot.toObject(User.class));
-//            } else {
-//                user.setValue(null);
-//            }
-//        });
+        this.getUsersCollection().document(uId).get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                user.setValue(documentSnapshot.toObject(User.class));
+            } else {
+                user.setValue(null);
+            }
+        });
         return user;
     }
 //methode pour afficher le user courant dans la page d'accueil

@@ -92,24 +92,4 @@ public class ListFragment extends Fragment {
             recyclerView.getAdapter().notifyDataSetChanged();
         });
     }
-
-    /*private void configureSearchRecyclerView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerSearchView = searchListBinding.searchRecyclerViewRestaurants;
-        recyclerSearchView.setLayoutManager(layoutManager);
-        searchAdapter = new SearchAdapter(predictions, requireActivity());
-        recyclerSearchView.setAdapter(searchAdapter);
-        recyclerSearchView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-    }*/
-
-    /*private void configureAutocomplete() {
-        go4LunchViewModel.getAutocomplete().observe(getViewLifecycleOwner(), placesAutocomplete -> {
-            placesAutocomplete.getName();
-            placesAutocomplete.getId();
-            recyclerView.getAdapter().notifyDataSetChanged();
-            //predictions.clear();
-            //predictions.addAll(placesAutocomplete.getPredictions());
-            //recyclerSearchView.getAdapter().notifyDataSetChanged();
-        });
-    }*/
 }
