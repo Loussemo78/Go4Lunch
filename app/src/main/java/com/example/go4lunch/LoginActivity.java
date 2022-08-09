@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
 
@@ -72,10 +71,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //setUpListeners();
         startSignInActivity();
         configureViewModel();
-        //setUpListeners();
 
     }
 //    @Override
@@ -86,13 +83,13 @@ public class LoginActivity extends AppCompatActivity {
 //        updateUI(currentUser);
 //    }
 
-    private void setUpListeners() {
-        if (userRepository.isCurrentUserLogged()) {
-            startSignInActivity();
-        } else {
-            startMainActivity();
-        }
-    }
+//    private void setUpListeners() {
+//        if (userRepository.isCurrentUserLogged()) {
+//            startSignInActivity();
+//        } else {
+//            startMainActivity();
+//        }
+//    }
 
     private void startMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
@@ -103,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         this.handleResponseAfterSignIn(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

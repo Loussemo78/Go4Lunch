@@ -2,6 +2,7 @@ package com.example.go4lunch.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.util.Log;
 import android.view.View;
 
@@ -34,6 +35,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
     private final RestaurantItemBinding binding;
     private Context context;
     public static final String DETAIL_RESTAURANT = "place_id";
+    public static final double METERS_IN_MILE = 1609.344;
     private int number_users;
     private List<UserStateItem> userStateItemList;
 
@@ -63,17 +65,21 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
             }
         }
         // Displays distance
-        double distanceDouble = GeometryUtil.calculateDistance(context, result.getGeometry().getLocation().getLng(), result.getGeometry().getLocation().getLat());
-        String distanceString;
-        Double convertData = distanceDouble / 1000;
-        //int distanceInMeters = (int) distance;
-        if (distanceDouble > 900.0) {
-            distanceString = String.valueOf(GeometryUtil.roundOneDecimal(convertData)+"km");
-            binding.restaurantsDistance.setText(distanceString);
-        } else {
-             distanceString = String.valueOf(Math.round(convertData) + "m");
-            binding.restaurantsDistance.setText(distanceString);
-        }
+//        double distanceDouble = GeometryUtil.calculateDistance(context, result.getGeometry().getLocation().getLng(), result.getGeometry().getLocation().getLat());
+//        String distanceString;
+//        int convertData = (int) distanceDouble / 1000;
+//        //int distanceInt = (int) distance;
+//        if (distanceDouble > 900) {
+//            distanceString = String.valueOf(GeometryUtil.getString1000Less(convertData));
+//            binding.restaurantsDistance.setText(distanceString);
+//        } else {
+//             distanceString = String.valueOf(Math.round(convertData) + "m");
+//            binding.restaurantsDistance.setText(distanceString);
+//        }
+        GeometryUtil geometryUtil = new GeometryUtil();
+        String distance = geometryUtil.calculateDistance(result,context);
+        binding.restaurantsDistance.setText(distance);
+
         binding.numberPicture.getDrawable();
 
         // Shows a number of stars based on the restaurant's rating

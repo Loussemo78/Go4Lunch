@@ -1,21 +1,25 @@
 package com.example.go4lunch.utils;
 
+import static android.content.Context.LOCATION_SERVICE;
 import static java.lang.Math.acos;
 
 import android.content.Context;
-import android.location.LocationManager;
 import android.util.Log;
 
+import com.example.go4lunch.manager.LocationManager;
 import com.example.go4lunch.models.Location;
 import com.example.go4lunch.models.RestaurantsResult;
 import com.google.android.gms.maps.model.LatLng;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
+import androidx.annotation.NonNull;
+
 public class GeometryUtil {
 
 
-    private  static Location getDistances(Context context) {
+      @NonNull
+     private  static Location getDistances(Context context) {
         Location location = new Location();
         GPSTracker gps = new GPSTracker(context);
         if(gps.canGetLocation()){
@@ -28,40 +32,44 @@ public class GeometryUtil {
         return location;
     }
 
-    public static double calculateDistance(Context context, double toLong, double toLat) {
-        double fromLat = getDistances(context).getLat();
-        double fromLong = getDistances(context).getLng();
-        double d2r = Math.PI / 180;
-        double dLong = (toLong - fromLong) * d2r;
-        double dLat = (toLat - fromLat) * d2r;
-        double a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(fromLat * d2r)
-                * Math.cos(toLat * d2r) * Math.pow(Math.sin(dLong / 2.0), 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double d = 6367000 * c;
-        return Math.round(d);
+//    public static double calculateDistance(Context context, double toLong, double toLat) {
+//        double fromLat = getDistances(context).getLat();
+//        double fromLong = getDistances(context).getLng();
+//        double d2r = Math.PI / 180;
+//        double dLong = (toLong - fromLong) * d2r;
+//        double dLat = (toLat - fromLat) * d2r;
+//        double a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(fromLat * d2r)
+//                * Math.cos(toLat * d2r) * Math.pow(Math.sin(dLong / 2.0), 2);
+//        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+//        double d = 6367000 * c;
+//        return Math.round(d);
+//    }
+    public String calculateDistance(RestaurantsResult result , Context context) {
+        Double lat = result.getGeometry().getLocation().getLat();
+        Double lng = result.getGeometry().getLocation().getLng();
+        LatLng latLng1 = new LatLng(lat, lng);
+
+        //Get current location
+        LocationManager locationManager = new LocationManager(context);
+        LatLng latLng2 = locationManager.getCurrentLatLng();
+
+
+        //Calculate distance in meter
+        double distanceDouble = greatCircleInMeters(latLng1, latLng2);
+        String distance;
+        //If distance is more than 900 m, convert to km
+        if (distanceDouble > 900) {
+            distanceDouble = distanceDouble / 1000;
+            distance = String.valueOf(roundOneDecimal(distanceDouble) + "km");
+        } else {
+            distance = String.valueOf(Math.round(distanceDouble)) + "m";
+        }
+        return distance;
+
     }
 
 
 
-//public static String calculateDistance(RestaurantsResult result, Context context) {
-//    Double lat = result.getGeometry().getLocation().getLat();
-//    Double lng = result.getGeometry().getLocation().getLng();
-//    LatLng latLng1 = new LatLng(lat, lng);
-//    LocationManager locationManager = new ;
-//    LatLng latLng2 =
-//
-//    //Calculate distance in meter
-//    double distanceDouble = greatCircleInMeters(latLng1, latLng2);
-//    String distance;
-//    //If distance is more than 900 m, convert to km
-//    if (distanceDouble > 900) {
-//        distanceDouble = distanceDouble / 1000;
-//        distance = String.valueOf(roundOneDecimal(distanceDouble) + "km");
-//    } else {
-//        distance = String.valueOf(Math.round(distanceDouble)) + "m";
-//    }
-//    return distance;
-//}
 
 public static String getString1000Less(double distance){
         double d = distance / 1000;
@@ -93,5 +101,7 @@ public static String getString1000Less(double distance){
 
         return 6371.01 * acos(sin(phi1) * sin(phi2) + cos(phi1) * cos(phi2) * cos(lam2 - lam1));
     }
+
+
 
 }
