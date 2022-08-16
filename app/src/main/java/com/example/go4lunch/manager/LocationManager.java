@@ -38,6 +38,4 @@ public class LocationManager {
 
         return new LatLng(currentLat, currentLng);
     }
-
-
 }

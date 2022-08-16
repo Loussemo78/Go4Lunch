@@ -84,6 +84,13 @@ public class RestaurantsDetailActivity extends AppCompatActivity implements Util
                 .load(url)
                 .into(binding.imgRestaurantDetails);
 
+        binding.ButtonReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         binding.restaurantDetailsFloatingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,9 +165,9 @@ public class RestaurantsDetailActivity extends AppCompatActivity implements Util
     }
 
 
-    public static void navigate(FragmentActivity activity, String eatingPlaceid) {
+    public static void navigate(FragmentActivity activity, String placeId) {
         Intent intent = new Intent(activity, RestaurantsDetailActivity.class);
-        intent.putExtra(DETAIL_RESTAURANT, eatingPlaceid);
+        intent.putExtra(DETAIL_RESTAURANT, placeId);
         ActivityCompat.startActivity(activity, intent, null);
     }
 

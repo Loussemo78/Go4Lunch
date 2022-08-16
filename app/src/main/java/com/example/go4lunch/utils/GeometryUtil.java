@@ -32,18 +32,7 @@ public class GeometryUtil {
         return location;
     }
 
-//    public static double calculateDistance(Context context, double toLong, double toLat) {
-//        double fromLat = getDistances(context).getLat();
-//        double fromLong = getDistances(context).getLng();
-//        double d2r = Math.PI / 180;
-//        double dLong = (toLong - fromLong) * d2r;
-//        double dLat = (toLat - fromLat) * d2r;
-//        double a = Math.pow(Math.sin(dLat / 2.0), 2) + Math.cos(fromLat * d2r)
-//                * Math.cos(toLat * d2r) * Math.pow(Math.sin(dLong / 2.0), 2);
-//        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-//        double d = 6367000 * c;
-//        return Math.round(d);
-//    }
+
     public String calculateDistance(RestaurantsResult result , Context context) {
         Double lat = result.getGeometry().getLocation().getLat();
         Double lng = result.getGeometry().getLocation().getLng();

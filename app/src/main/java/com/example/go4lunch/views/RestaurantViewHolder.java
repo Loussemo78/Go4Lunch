@@ -64,18 +64,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
                 binding.restaurantsOpening.getResources().getColor(R.color.red);
             }
         }
-        // Displays distance
-//        double distanceDouble = GeometryUtil.calculateDistance(context, result.getGeometry().getLocation().getLng(), result.getGeometry().getLocation().getLat());
-//        String distanceString;
-//        int convertData = (int) distanceDouble / 1000;
-//        //int distanceInt = (int) distance;
-//        if (distanceDouble > 900) {
-//            distanceString = String.valueOf(GeometryUtil.getString1000Less(convertData));
-//            binding.restaurantsDistance.setText(distanceString);
-//        } else {
-//             distanceString = String.valueOf(Math.round(convertData) + "m");
-//            binding.restaurantsDistance.setText(distanceString);
-//        }
+
         GeometryUtil geometryUtil = new GeometryUtil();
         String distance = geometryUtil.calculateDistance(result,context);
         binding.restaurantsDistance.setText(distance);

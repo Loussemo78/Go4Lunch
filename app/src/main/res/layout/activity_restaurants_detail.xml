@@ -12,16 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_details"
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/color"
-            android:elevation="10dp"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" tools:targetApi="lollipop"/> -->
+
 
         <ImageView
             android:id="@+id/img_restaurant_details"
@@ -31,6 +22,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/ButtonReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="4dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -100,18 +101,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <!--<com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/restaurant_details_navigation"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:background="@color/white"
-            app:menu="@menu/details_navigation_menu"
-            app:itemTextColor="@color/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:elevation="12dp"
-            android:focusable="auto"/> -->
+
        <!--  BUTTONS -->
         <LinearLayout
             android:id="@+id/restaurant_buttonsBar_layout"
@@ -201,38 +191,15 @@
             </LinearLayout>
 
         </LinearLayout>
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/nobody_image"
-            android:visibility="invisible"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:src="@drawable/serveur1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/restaurant_details_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/restaurant_buttonsBar_layout"
             android:layout_marginTop="20dp"/>
-        <TextView
-            android:id="@+id/nobody_text"
-            android:visibility="invisible"
-            android:text="@string/no_body_register_yet"
-            android:layout_width="417dp"
-            android:layout_height="72dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/colorPrimary"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/nobody_image"
-            android:gravity="center_horizontal" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

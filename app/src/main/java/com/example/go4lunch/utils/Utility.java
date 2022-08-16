@@ -32,6 +32,7 @@ public class Utility {
     private static final String PREFS_LIKES = "likes";
     private static final String PREFS_TOGGLE = "toggle";
     private static final String KEY_ID = "key_id";
+    private static final String DETAIL_RESTAURANT= "place_id";
     private final Gson gson = new Gson();
     private static volatile User instance;
     private OnClickButtonAlertDialog onClickButtonAlertDialog;
@@ -148,9 +149,9 @@ public class Utility {
     }
 
 
-    public void startDetailsRestaurantActivity(Context context, String id) {
+    public void startDetailsRestaurantActivity(Context context, String placeId) {
         Intent intent = new Intent(context, RestaurantsDetailActivity.class);
-        intent.putExtra(KEY_ID, id);
+        intent.putExtra(DETAIL_RESTAURANT, placeId);
         context.startActivity(intent);
     }
 

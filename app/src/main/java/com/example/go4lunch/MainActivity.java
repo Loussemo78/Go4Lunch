@@ -36,6 +36,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -45,11 +46,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.go4lunch.databinding.ActivityMainBinding;
 import com.example.go4lunch.models.Prediction;
+import com.example.go4lunch.models.RestaurantsResult;
 import com.example.go4lunch.repositories.UserRepository;
 import com.example.go4lunch.utils.Utility;
 import com.example.go4lunch.views.AutocompleteAdapter;
 import com.example.go4lunch.views.Go4LunchViewModel;
 import com.example.go4lunch.views.ProfilViewModel;
+import com.example.go4lunch.views.RestaurantAdapter;
+import com.example.go4lunch.views.UserStateItem;
 import com.example.go4lunch.views.WorkmatesFragment;
 import com.example.go4lunch.views.ListFragment;
 import com.example.go4lunch.views.MapFragment;
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private List<Prediction> predictions = new ArrayList<>();
     private FusedLocationProviderClient fusedLocationClient;
     private AutocompleteAdapter adapter;
+    private RestaurantAdapter restaurantAdapter = null;
     private RecyclerView recyclerView;
     private Executor application;
     private String provider;
@@ -124,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         configureNavigationView();
 
-        //  configureRecyclerView();
+         //configureRecyclerView();
 
 
         checkLocationPermission();
@@ -132,14 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void configureRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        adapter = new AutocompleteAdapter(new AutocompleteAdapter.OnAutocompleteResultClickCallback() {
-            @Override
-            public void onClick(@NonNull Prediction prediction) {
-                go4LunchViewModel.onAutocompleteResultsClick();
-
-            }
-
-        });
         // recyclerView = binding.searchList;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
@@ -249,11 +246,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         name.setText(username);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         SearchView searchView = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         final SearchView.SearchAutoComplete searchAutoComplete = (SearchView.SearchAutoComplete) searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         searchAutoComplete.setBackgroundColor(Color.BLUE);
         searchAutoComplete.setTextColor(Color.GREEN);
@@ -262,10 +261,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final ArrayAdapter<Prediction> predictionAdapter = new ArrayAdapter<Prediction>(MainActivity.this, android.R.layout.simple_spinner_item);
         searchAutoComplete.setAdapter(predictionAdapter);
 
+
         searchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 searchAutoComplete.setText(adapterView.getItemAtPosition(i).toString());
+                Utility utils = new Utility();
+                UserStateItem user = new UserStateItem();
+                utils.startDetailsRestaurantActivity(MainActivity.this, user.getRestaurantId());
+
             }
         });
 
@@ -273,7 +277,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //getYourRestaurant();
                 return true;
             }
 
@@ -281,31 +284,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onQueryTextChange(String newText) {
                 //ajouter view model de l'appel web service
                 if (newText.length() > 2) {
-
                     go4LunchViewModel.getPredictions(newText, mLocation,3000).observe(MainActivity.this, result -> {
                         predictionAdapter.clear();
                         predictionAdapter.addAll(result.getPredictions());
                         predictionAdapter.notifyDataSetChanged();
                         predictionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
                     });
-                    //   go4LunchViewModel.startRequest(newText,mLocation);
                 } else {
                     predictionAdapter.clear();
                     predictionAdapter.notifyDataSetChanged();
                 }
-                // Log.d(TAG, "onQueryTextChange: " + newText);
-               /* if (newText.length() > 2 ) {
-                    // Retrieve coords
-                   // mPosition = Singleton.get ;
-                    //Log.d(TAG, "onQueryTextChange: input: " + newText + ", location: " + mPosition);
-                } else if (newText.length() < 2) {
-                    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_main_frame_layout);
-                    if (fragment instanceof ListFragment) {
-                        ((ListFragment) Objects.requireNonNull(fragment)).updateList();
-                    } else if (fragment instanceof MapFragment) {
-                        ((MapFragment) fragment).updateMap();
-                    }
-                }*/
+
                 return false;
             }
         });

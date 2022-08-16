@@ -42,6 +42,7 @@
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_main_frame_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_main_nav_header.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_restaurants_detail.xml" value="0.2" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_setting.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/content_maps.xml" value="0.22826086956521738" />
@@ -55,6 +56,7 @@
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/search_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/layout/toolbar.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/menu/activity_main_menu_drawer.xml" value="0.28802083333333334" />
+        <entry key="..\:/Users/micha/Documents/Go4Lunch/app/src/main/res/menu/menu.xml" value="0.28802083333333334" />
       </map>
     </option>
   </component>
