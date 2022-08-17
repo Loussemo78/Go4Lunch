@@ -265,11 +265,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                searchAutoComplete.setText(adapterView.getItemAtPosition(i).toString());
-                Utility utils = new Utility();
-                UserStateItem user = new UserStateItem();
-                utils.startDetailsRestaurantActivity(MainActivity.this, user.getRestaurantId());
-
+                Prediction prediction = (Prediction) adapterView.getAdapter().getItem(i);
+                searchAutoComplete.setText(prediction.getDescription());
+                Intent intent = new Intent(MainActivity.this, RestaurantsDetailActivity.class);
+                intent.putExtra("place_id", prediction.getPlaceId());
+                startActivity(intent);
             }
         });
 

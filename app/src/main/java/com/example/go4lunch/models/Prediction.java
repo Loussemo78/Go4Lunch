@@ -13,6 +13,9 @@ public class Prediction {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("place_id")
+    @Expose
+    private String placeId;
 
     @Override
     public boolean equals(Object o) {
@@ -27,9 +30,7 @@ public class Prediction {
         return ObjectsCompat.hash(description, id, placeId);
     }
 
-    @SerializedName("place_id")
-    @Expose
-    private String placeId;
+
 
     public String getDescription() {
         return description;
