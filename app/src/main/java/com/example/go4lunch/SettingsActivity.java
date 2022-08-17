@@ -55,14 +55,14 @@ public class SettingsActivity extends AppCompatActivity {
     private void configureToolbar() {
         this.toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Get a support ActionBar corresponding to this toolbar
-        ActionBar ab = getSupportActionBar();
-        // Set and enable the Up button
-        if (ab != null) {
-            Drawable upArrow = getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24);
-            getSupportActionBar().setHomeAsUpIndicator(upArrow);
-            ab.setDisplayHomeAsUpEnabled(true);
-        }
+        toolbar.setTitle(R.string.notification_title);
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void subscribeNotifications() {
@@ -70,7 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
             if (isChecked) {
                 // Save the state of the checkbox and reuse it when SettingsActivity is open
                 prefs.saveNotificationState(true);
-                FirebaseMessaging.getInstance().subscribeToTopic("notification")
+                FirebaseMessaging.getInstance().subscribeToTopic("update")
                         .addOnCompleteListener(task -> {
                             String msg = getString(R.string.notification_subscribed);
                             if (!task.isSuccessful()) {
@@ -82,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity {
                      }else{
                 // Save the state of the checkbox and reuse it when SettingsActivity is open
                 prefs.saveNotificationState(false);
-                FirebaseMessaging.getInstance().subscribeToTopic("notification")
+                FirebaseMessaging.getInstance().subscribeToTopic("update")
                         .addOnCompleteListener(task -> {
                             String msg = getString(R.string.notification_unsubscribed);
                             if (!task.isSuccessful()) {
@@ -113,7 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
                      firebaseHelper.deleteWorkmate(currentUser.getUid());
                      prefs.saveNotificationState(false);
                      // Unsubscribe to notification
-                     FirebaseMessaging.getInstance().unsubscribeFromTopic("notification")
+                     FirebaseMessaging.getInstance().unsubscribeFromTopic("update")
                              .addOnCompleteListener(task -> {
                                  String msg = getString(R.string.notification_unsubscribed);
                                  if (!task.isSuccessful()) {
