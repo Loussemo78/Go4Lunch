@@ -74,13 +74,13 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         // Shows a number of stars based on the restaurant's rating
         if (result.getRating() != null) {
             float numStars = binding.ratingBar.getNumStars();
-            if (numStars > 1) {
+            if (numStars < 2) {
                 binding.ratingBar.setRating(1);
             }
-            if (numStars > 2.5) {
+            if (numStars > 2) {
                 binding.ratingBar.setRating(2);
             }
-            if (numStars > 4) {
+            if (numStars >= 4.5) {
                 binding.ratingBar.setRating(3);
             }
         }
