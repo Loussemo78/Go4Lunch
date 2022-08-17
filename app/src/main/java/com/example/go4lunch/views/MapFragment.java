@@ -124,7 +124,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                                 .getLocation()
                                 .getLng()))
                         .icon(setMarkerOnMap(result.getUserInterested()))
-                        //.icon(result.getUserInterested() > 0 ? BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant_marker_green) : BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant_marker_orange))
                         .title(result.getName()));
                 marker.setTag(result);
             }
@@ -157,17 +156,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         // [START_EXCLUDE silent]
     }
 
-   /* private BitmapDescriptor bitmapDescriptorFromVector(Context context, @DrawableRes int vectorDrawableResourceId) {
-        Drawable background = ContextCompat.getDrawable(context, R.drawable.ic_restaurant_marker_orange);
-        background.setBounds(0, 0, background.getIntrinsicWidth(), background.getIntrinsicHeight());
-        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId);
-        vectorDrawable.setBounds(40, 20, vectorDrawable.getIntrinsicWidth() + 40, vectorDrawable.getIntrinsicHeight() + 20);
-        Bitmap bitmap = Bitmap.createBitmap(background.getIntrinsicWidth(), background.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        background.draw(canvas);
-        vectorDrawable.draw(canvas);
-        return BitmapDescriptorFactory.fromBitmap(bitmap);
-    }*/
+
 
     private BitmapDescriptor setMarkerOnMap(int userInterested) {
         if (userInterested > 0) {
@@ -182,46 +171,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 }
 
 
-    /*private void updateUiWithMarkers(RestaurantDetail placesDetail) {
 
-        if (placesDetail.getResult().size() != 0 || placesDetail.getResult() != null) {
-            for (int i = 0; i < placesDetail.getResult().size(); i++) {
-                Double lat = placesDetail.getResult().get(i).getDetailGeometry().getLocation().getLat();
-                Double lng = placesDetail.getResult().get(i).getDetailGeometry().getLocation().getLng();
-                String placeName = placesDetail.getResult().get(i).getDetailName();
-                String vicinity = placesDetail.getResult().get(i).getDetailVicinity();
-                String id = placesDetail.getResult().get(i).getDetailPlaceId();
-                LatLng latLng = new LatLng(lat, lng);
-
-
-                // Get all users, then, if the query size is positive, place a green marker (an orange one otherwise)
-                Query query = UserHelper.getAllUsers().whereEqualTo("restaurantId", id);
-                query.addSnapshotListener((queryDocumentSnapshots, e) -> {
-
-                    try {
-                        if (Objects.requireNonNull(queryDocumentSnapshots).size() == 0) {
-                            mMap.addMarker(new MarkerOptions()
-                                    .position(latLng)
-                                    .title(placeName + " : " + vicinity)
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant_marker_orange)))
-                                    .setTag(id);
-                        } else {
-                            mMap.addMarker(new MarkerOptions()
-                                    .position(latLng)
-                                    .title(placeName + " : " + vicinity)
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant_marker_green)))
-                                    .setTag(id);
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                });
-
-            }
-        } else {
-            Log.e(TAG, "updateUiWithMarkers: no result found");
-        }
-    }*/
 
 
 

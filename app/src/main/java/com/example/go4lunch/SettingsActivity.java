@@ -82,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity {
                      }else{
                 // Save the state of the checkbox and reuse it when SettingsActivity is open
                 prefs.saveNotificationState(false);
-                FirebaseMessaging.getInstance().subscribeToTopic("update")
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("update")
                         .addOnCompleteListener(task -> {
                             String msg = getString(R.string.notification_unsubscribed);
                             if (!task.isSuccessful()) {

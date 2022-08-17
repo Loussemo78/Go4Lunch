@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.go4lunch.RestaurantsDetailActivity;
 import com.example.go4lunch.SettingsActivity;
+import com.example.go4lunch.models.RestaurantsResult;
 import com.example.go4lunch.models.User;
 import com.example.go4lunch.repositories.UserRepository;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -32,7 +33,7 @@ public class Utility {
     private static final String PREFS_LIKES = "likes";
     private static final String PREFS_TOGGLE = "toggle";
     private static final String KEY_ID = "key_id";
-    private static final String DETAIL_RESTAURANT= "place_id";
+    private static final String DETAIL_RESTAURANT = "place_id";
     private final Gson gson = new Gson();
     private static volatile User instance;
     private OnClickButtonAlertDialog onClickButtonAlertDialog;
@@ -43,13 +44,16 @@ public class Utility {
     }
 
 
-    public Utility(){
+    public Utility() {
 
     }
+
     public interface OnClickButtonAlertDialog {
         void positiveButtonDialogClicked(DialogInterface dialog, int dialogIdForSwitch);
+
         void negativeButtonDialogClicked(DialogInterface dialog, int dialogIdForSwitch);
     }
+
     private SharedPreferences getSharedPreferences(Context context) {
         return context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     }
@@ -79,7 +83,8 @@ public class Utility {
         if (json == null || json.isEmpty()) {
             list = new ArrayList<>();
         } else {
-            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            Type type = new TypeToken<ArrayList<String>>() {
+            }.getType();
             list = gson.fromJson(json, type);
         }
 
@@ -109,7 +114,7 @@ public class Utility {
         return (float) rating;
     }
 
-    public static class UserViewHolder extends RecyclerView.ViewHolder{
+    public static class UserViewHolder extends RecyclerView.ViewHolder {
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -118,7 +123,7 @@ public class Utility {
 
     public void showAlertDialog(Context context, String dialogTitle, String dialogMessage,
                                 String positiveButtonText, String negativeButtonText,
-                                int dialogDrawableBackground, int dialogDrawableIcon, int dialogIdForSwitch){
+                                int dialogDrawableBackground, int dialogDrawableIcon, int dialogIdForSwitch) {
 
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(context);
         dialogBuilder.setTitle(dialogTitle);
@@ -135,12 +140,18 @@ public class Utility {
     }
 
     // Get the date of the day
-    public  String getTodayDate() {
+    public String getTodayDate() {
         Calendar calendar = Calendar.getInstance();
         // Create a SimpleDateFormat
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         // Get today date
         return sdf.format(calendar.getTime());
+    }
+
+    public String getNameRestaurant() {
+        RestaurantsResult result = new RestaurantsResult();
+        String name = result.getName();
+        return name;
     }
 
     public void showSnackbar(View view, String text) {

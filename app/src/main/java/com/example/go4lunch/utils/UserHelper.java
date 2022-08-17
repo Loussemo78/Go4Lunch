@@ -40,17 +40,17 @@ public class UserHelper {
         this.workmatesRepository = workmatesRepository;
     }
 
-    public LiveData<List<UserStateItem>>getUsersChoiceRestaurant(){
-        return Transformations.map(workmatesRepository.getAllWorkmates(), users -> {
-            List<UserStateItem> userStateItems = new ArrayList<>();
-            for(User u : users) {
-                if (u.getRestaurantName() != null) {
-                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getIsEatingAt()));
-                }
-            }
-            return userStateItems;
-        });
-    }
+//    public LiveData<List<UserStateItem>>getUsersChoiceRestaurant(){
+//        return Transformations.map(workmatesRepository.getAllWorkmates(), users -> {
+//            List<UserStateItem> userStateItems = new ArrayList<>();
+//            for(User u : users) {
+//                if (u.getRestaurantName() != null) {
+//                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getIsEatingAt()));
+//                }
+//            }
+//            return userStateItems;
+//        });
+//    }
 
     public static CollectionReference getUsersCollection() {
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
@@ -59,17 +59,17 @@ public class UserHelper {
     public  CollectionReference getCollectionUsers() {
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
     }
-    public static Task<Void> createUser(String uid,
-                                        String username,
-                                        String urlPicture,
-                                        String restaurantId,
-                                        Boolean mEatingAt,
-                                        ArrayList<String> restaurantLikedList) {
-        User userToCreate = new User(uid, username, urlPicture, restaurantId,mEatingAt);
-        return UserHelper.getUsersCollection()
-                .document(uid) // Setting uID for Document
-                .set(userToCreate); // Setting object for Document
-    }
+//    public static Task<Void> createUser(String uid,
+//                                        String username,
+//                                        String urlPicture,
+//                                        String restaurantId,
+//                                        Boolean mEatingAt,
+//                                        ArrayList<String> restaurantLikedList) {
+//        User userToCreate = new User(uid, username, urlPicture, restaurantId,mEatingAt);
+//        return UserHelper.getUsersCollection()
+//                .document(uid) // Setting uID for Document
+//                .set(userToCreate); // Setting object for Document
+//    }
 
     public static Task<DocumentSnapshot> getUser(String uid){
         return UserHelper.getUsersCollection().document(uid).get();

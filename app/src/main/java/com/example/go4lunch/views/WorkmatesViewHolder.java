@@ -40,7 +40,7 @@ public class WorkmatesViewHolder extends RecyclerView.ViewHolder {
         binding.itemConstraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.getEatingAt() != null) {
+               // if (user.getEatingAt() != null) {
                     Intent intent = new Intent(v.getContext(), RestaurantsDetailActivity.class);
                     if (!TextUtils.isEmpty(user.getRestaurantId()))
                     {
@@ -48,7 +48,7 @@ public class WorkmatesViewHolder extends RecyclerView.ViewHolder {
                         intent.putExtra(DETAIL_RESTAURANT, result);
                         v.getContext().startActivity(intent);
                     }
-                }
+                //}
             }
         });
     }

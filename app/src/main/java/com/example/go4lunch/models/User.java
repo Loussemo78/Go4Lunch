@@ -16,10 +16,11 @@ public class User {
     private String urlPicture ;
     private String restaurantId;
     private String restaurantName;
-    @Nullable
-    private String restaurantDate;
-    private Boolean isEatingAt;
-    private RestaurantsResult restaurantsResult;
+//    private String restaurantDate;
+//    private Boolean isEatingAt;
+//    private RestaurantsResult restaurantsResult;
+//    private List<User> users ;
+//    private User user;
 
 
 
@@ -37,20 +38,19 @@ public class User {
     }
 
 
-    private List<User> users ;
-    private User user;
 
-    public User(User user) {
-        this.user = user;
-    }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User(User user) {
+//        this.user = user;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public String getRestaurantId() {
         return restaurantId;
@@ -60,12 +60,12 @@ public class User {
     }
 
 
-    public User(String uid, String username, String urlPicture, String restaurantId , Boolean isEatingAt) {
+    public User(String uid, String username, String urlPicture, String restaurantId ) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.restaurantId = restaurantId;
-        this.isEatingAt = isEatingAt;
+        //this.isEatingAt = isEatingAt;
     }
 
     public User(String uid) {
@@ -75,13 +75,13 @@ public class User {
 
 
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
 
 
@@ -91,13 +91,13 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
-    public Boolean getIsEatingAt() {
-        return isEatingAt;
-    }
-
-    public void setIsEatingAt(Boolean isEatingAt) {
-        this.isEatingAt = isEatingAt;
-    }
+//    public Boolean getIsEatingAt() {
+//        return isEatingAt;
+//    }
+//
+//    public void setIsEatingAt(Boolean isEatingAt) {
+//        this.isEatingAt = isEatingAt;
+//    }
 
     public User(){
 
@@ -127,16 +127,16 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
-    @Nullable
-    public String getRestaurantDate() { return restaurantDate; }
-
-    public RestaurantsResult getRestaurantsResult() {
-        return restaurantsResult;
-    }
-
-    public void setRestaurantsResult(RestaurantsResult restaurantsResult) {
-        this.restaurantsResult = restaurantsResult;
-    }
+//    @Nullable
+//    public String getRestaurantDate() { return restaurantDate; }
+//
+//    public RestaurantsResult getRestaurantsResult() {
+//        return restaurantsResult;
+//    }
+//
+//    public void setRestaurantsResult(RestaurantsResult restaurantsResult) {
+//        this.restaurantsResult = restaurantsResult;
+//    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -78,7 +78,7 @@ public class FirebaseHelper {
         User userinfo = new User(uid, name, urlPicture);
         userinfo.setRestaurantName(restaurantName);
         userinfo.setRestaurantId(restaurantId);
-        userinfo.setIsEatingAt(true);
+        //userinfo.setIsEatingAt(true);
 
         usersRef.document(user.getUid()).set(userinfo).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

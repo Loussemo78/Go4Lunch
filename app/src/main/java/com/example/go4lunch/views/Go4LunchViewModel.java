@@ -168,17 +168,17 @@ public class Go4LunchViewModel extends AndroidViewModel {
     public void onAutocompleteResultsClick() {
 
     }
-    public LiveData<List<UserStateItem>>getUsersChoiceRestaurant(){
-        return Transformations.map(workmatesRepository.getAllWorkmates(), users -> {
-            List<UserStateItem> userStateItems = new ArrayList<>();
-            for(User u : users) {
-                if (u.getRestaurantName() != null) {
-                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture(),u.getIsEatingAt()));
-                }
-            }
-            return userStateItems;
-        });
-    }
+//    public LiveData<List<UserStateItem>>getUsersChoiceRestaurant(){
+//        return Transformations.map(workmatesRepository.getAllWorkmates(), users -> {
+//            List<UserStateItem> userStateItems = new ArrayList<>();
+//            for(User u : users) {
+//                if (u.getRestaurantName() != null) {
+//                    userStateItems.add(new UserStateItem(u.getUid(),u.getUsername(),u.getUrlPicture()));
+//                }
+//            }
+//            return userStateItems;
+//        });
+//    }
     /*public void getPredictions(String input, String location ) {
         go4LunchRepository.getPlacesAutocomplete()
        // listPlaceAutoComplete.setValue(place);

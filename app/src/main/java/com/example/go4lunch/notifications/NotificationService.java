@@ -66,9 +66,8 @@ public class NotificationService extends FirebaseMessagingService {
 
                     .addOnSuccessListener(documentSnapshot -> {
                         currentWorkmate = documentSnapshot.toObject(User.class);
-                        if (utils.getTodayDate().equals(currentWorkmate.getRestaurantDate())){
+                        if (utils.getNameRestaurant().equals(currentWorkmate.getRestaurantName())){
                             String myLunchRestaurant = currentWorkmate.getRestaurantName();
-                            String myRestaurantAddress = currentWorkmate.getRestaurantsResult().getVicinity();
 
                             // Get the names of the workmates who chose this restaurant
                            userHelper.getCollectionUsers()
@@ -89,7 +88,7 @@ public class NotificationService extends FirebaseMessagingService {
                                            Log.d(TAG, "Error getting documents: ", task.getException());
                                        }
                                         sendVisualNotification(messageBody, myLunchRestaurant,
-                                                myRestaurantAddress, myLunchWorkmates);
+                                                 myLunchWorkmates);
                                     });
                         }
                     });
@@ -98,18 +97,18 @@ public class NotificationService extends FirebaseMessagingService {
     }
 
     @SuppressLint("StringFormatInvalid")
-    private void sendVisualNotification(String messageBody, String myLunchRestaurant, String myRestaurantAddress, List<String> myLunchWorkmates){
+    private void sendVisualNotification(String messageBody, String myLunchRestaurant, List<String> myLunchWorkmates){
         // Create an Intent that will be shown when user will click on the Notification
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         String notificationText;
         if (myLunchWorkmates.isEmpty()) {
-            notificationText = getString(R.string.notification_alone, myLunchRestaurant, myRestaurantAddress);
+            notificationText = getString(R.string.notification_alone, myLunchRestaurant);
         } else {
             // Format the list of workmates
             String formatMyLunchWorkmates = TextUtils.join(", ", myLunchWorkmates);
             // Get notificationText with them
-            notificationText = getString(R.string.notification, myLunchRestaurant, myRestaurantAddress, formatMyLunchWorkmates);
+            notificationText = getString(R.string.notification, myLunchRestaurant, formatMyLunchWorkmates);
         }
 
         // Create a Style for the Notification

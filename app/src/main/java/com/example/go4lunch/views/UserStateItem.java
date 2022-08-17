@@ -38,13 +38,13 @@ public class UserStateItem {
         RestaurantChoice = restaurantChoice;
     }
 
-    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, String restaurantName, String restaurantId, Boolean isEatingAt) {
+    public UserStateItem(@NonNull String uid, @NonNull String username, @NonNull String urlPicture, String restaurantName, String restaurantId) {
         this.uid = uid;
         this.username = username;
         this.urlPicture = urlPicture;
         this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
-        this.isEatingAt = isEatingAt;
+        //this.isEatingAt = isEatingAt;
     }
 
     @NonNull
