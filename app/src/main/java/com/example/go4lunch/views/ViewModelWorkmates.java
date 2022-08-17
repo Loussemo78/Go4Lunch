@@ -68,18 +68,9 @@ public class ViewModelWorkmates extends ViewModel {
         return repository.getUserFromFirestore();
     }
 
-    //public void setLikedRestaurantById(String restaurantId , String restaurantName){ repository.setLikedRestaurantById(restaurantId, restaurantName);}
 
-    /*public void deleteLikedRestaurant(String restaurantId) {
-        repository.deleteLikedRestaurant(restaurantId);
-    }*/
 
     public void insertLikedRestaurant(LikedRestaurant likedRestaurant) {
         repository.insertLikedRestaurant(likedRestaurant);
     }
-
-
-
-    //public void updateEatingPlace(String uid, String eatingPlaceName, String eatingPlaceId ) { repository.updateEatingPlace(uid, eatingPlaceName, eatingPlaceId);}
-
 }

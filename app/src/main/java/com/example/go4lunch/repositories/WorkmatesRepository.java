@@ -178,11 +178,11 @@ public class WorkmatesRepository {
 
 
 
-    private void initData() {
-        FirebaseHelper.getInstance().usersRef.add(new User("hrRJcZSX0GZuHQ4HGZNJ","Virgile","https://avatars.githubusercontent.com/u/32424601?s=400&u=22568998290937ae2a2a682654e5af68cbfe27fd&v=4"));
-        FirebaseHelper.getInstance().usersRef.add(new User("hrRJdZSX0GpuHQ4HGZNJut","Franck","https://brandandcelebrities.com/wp-content/uploads/2017/04/Franck_Dubosc.jpg"));
-        FirebaseHelper.getInstance().usersRef.add(new User("cqRJeZSX0GouHQ4pGaNJutiK","The ROCK","https://www.avcesar.com/source/actualites/00/00/74/25/la-vraie-vie-de-dwayne-the-rock-johnson-avant-le-cinema_prev_01014840.jpg"));
-    }
+//    private void initData() {
+//        FirebaseHelper.getInstance().usersRef.add(new User("hrRJcZSX0GZuHQ4HGZNJ","Virgile","https://avatars.githubusercontent.com/u/32424601?s=400&u=22568998290937ae2a2a682654e5af68cbfe27fd&v=4"));
+//        FirebaseHelper.getInstance().usersRef.add(new User("hrRJdZSX0GpuHQ4HGZNJut","Franck","https://brandandcelebrities.com/wp-content/uploads/2017/04/Franck_Dubosc.jpg"));
+//        FirebaseHelper.getInstance().usersRef.add(new User("cqRJeZSX0GouHQ4pGaNJutiK","The ROCK","https://www.avcesar.com/source/actualites/00/00/74/25/la-vraie-vie-de-dwayne-the-rock-johnson-avant-le-cinema_prev_01014840.jpg"));
+//    }
 
     public Task<Void> insertLikedRestaurant(LikedRestaurant likedRestaurant) {
         //String uId = this.getCurrentUserUID();

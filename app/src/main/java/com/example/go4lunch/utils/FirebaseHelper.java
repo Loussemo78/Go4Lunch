@@ -141,17 +141,4 @@ public class FirebaseHelper {
             }
         });
     }
-
-
-    public Task<QuerySnapshot> getUsersLikedFromFirestore(String restaurantId) {
-        return likedRef.whereEqualTo(RestaurantsDetailActivity.RESTAURANT_ID, restaurantId).get();
-    }
-
-
-    public FirebaseUser getCurrentWorkmates() {
-        return FirebaseAuth.getInstance().getCurrentUser();
-    }
-
-
-
 }

@@ -31,28 +31,10 @@ public class WorkmatesViewModel extends AndroidViewModel {
         return userRepository.getUserFromFirestore();
     }
 
-    public Boolean isCurrentUserLogged(){
-        return (this.getCurrentUser() != null);
-    }
-
-   // public LiveData<List<LikedRestaurant>> getLikedRestaurants(){return userDataRepository.getLikedRestaurants();}
-
-   // public LiveData<LikedRestaurant> getLikedRestaurantById(String rId){return userDataRepository.getLikedRestaurantById(rId);}
 
     /** INSERT **/
     public void createUser(User user) { userRepository.createUser(user);}
 
-
-    /** UPDATE **/
-    public void updateUserName(String username){
-        userRepository.updateUsername(username);
-    }
-
-
-
-    /** DELETE **/
-    public void deleteUserRestaurant(){userRepository.deleteUserFromFirestore();
-    }
 
 
 }

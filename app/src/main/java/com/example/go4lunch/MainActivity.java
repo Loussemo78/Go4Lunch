@@ -46,14 +46,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.go4lunch.databinding.ActivityMainBinding;
 import com.example.go4lunch.models.Prediction;
-import com.example.go4lunch.models.RestaurantsResult;
 import com.example.go4lunch.repositories.UserRepository;
-import com.example.go4lunch.utils.Utility;
-import com.example.go4lunch.views.AutocompleteAdapter;
 import com.example.go4lunch.views.Go4LunchViewModel;
 import com.example.go4lunch.views.ProfilViewModel;
 import com.example.go4lunch.views.RestaurantAdapter;
-import com.example.go4lunch.views.UserStateItem;
 import com.example.go4lunch.views.WorkmatesFragment;
 import com.example.go4lunch.views.ListFragment;
 import com.example.go4lunch.views.MapFragment;
@@ -85,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ProfilViewModel profilViewModel;
     private List<Prediction> predictions = new ArrayList<>();
     private FusedLocationProviderClient fusedLocationClient;
-    private AutocompleteAdapter adapter;
     private RestaurantAdapter restaurantAdapter = null;
     private RecyclerView recyclerView;
     private Executor application;
@@ -129,18 +124,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         configureNavigationView();
 
-         //configureRecyclerView();
 
 
         checkLocationPermission();
     }
 
-    private void configureRecyclerView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        // recyclerView = binding.searchList;
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(layoutManager);
-    }
+
 
     private void configureActionBar() {
         ActionBar actionBar = getSupportActionBar();
@@ -169,56 +158,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            });
         configureBottomView();
 
-        /*go4LunchViewModel.getAutocompleteResults().observe(this, result -> {
-            predictions.addAll(result);
-            final ArrayAdapter<Prediction> adapter = new ArrayAdapter<Prediction>(this, android.R.layout.simple_spinner_item, predictions);
-            mSearchAutocomplete.setAdapter(adapter);
-            //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        });
-        /*go4LunchViewModel.getAutocompleteResults().observe(this, new Observer<List<Prediction>>() {
-
-            @Override
-            public void onChanged(List<Prediction> strings) {
-                final ArrayAdapter<Prediction> adapter = new ArrayAdapter<Prediction>(this, android.R.layout.simple_spinner_item, );
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                //adapter.submitList(strings);
-            }
-        });*/
-    }
-
-    /*public void startAutocompleteActivity() {
-        Intent intent = new Autocomplete.IntentBuilder(
-                AutocompleteActivityMode.OVERLAY,
-                Arrays.asList(Place.Field.ID, Place.Field.NAME))
-                .setTypeFilter(TypeFilter.ESTABLISHMENT)
-                .setLocationBias(RectangularBounds.newInstance(
-                        new LatLng(48.8534, 2.3488),
-                        new LatLng(48.866667, 2.333333)
-                ))
-                .setCountries(Arrays.asList("FR"))
-                .build(this);
-        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
-        go4LunchViewModel.getAutocomplete();
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Place place = Autocomplete.getPlaceFromIntent(data);
-                //Log.i("TAG", "Place:" + place.getName() + "," + place.getId());
-                go4LunchViewModel.loadAutocomplete(place);
-            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
-                Status status = Autocomplete.getStatusFromIntent(data);
-                Log.i("TAG", status.getStatusMessage());
-            } else if (resultCode == RESULT_CANCELED) {
 
-            }
-            return;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }*/
 
     private void updateUIWithUserData() {
         if (userRepository.isCurrentUserLogged()) {

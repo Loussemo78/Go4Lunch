@@ -72,25 +72,6 @@ public class UserRepository {
         this.getUsersCollection().document(userToCreate.getUid()).set(userToCreate);
 
     }
-        /*Task<DocumentSnapshot> userData = getUserData();
-        // If the user already exist in Firestore, we get his data (isMentor)
-        userData.addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.contains(IS_MENTOR_FIELD)) {
-                        userToCreate.setMentor((Boolean) documentSnapshot.get(IS_MENTOR_FIELD));
-                    }*/
-    // });
-
-
-
-    // Get User Data from Firestore
-  /* public Task<DocumentSnapshot> getUserData(){
-        String uid = this.getCurrentUserUID();
-        if(uid != null){
-            return this.getUsersCollection().document(uid).get();
-        }else{
-            return null;
-        }
-    }*/
 
     public MutableLiveData<User> getUserFromFirestore() {
         String uId = this.getCurrentUserUID();
@@ -103,31 +84,5 @@ public class UserRepository {
             }
         });
         return user;
-    }
-
-    // Update User Username
-    public void updateUsername(String username) {
-        String uid = this.getCurrentUserUID();
-        if (uid != null) {
-            this.getUsersCollection().document(uid).update(USERNAME_FIELD, username);
-        } else {
-            Log.e("", "error");
-        }
-    }
-
-    // Update User isMentor
-    public void updateIsMentor(Boolean isMentor) {
-        String uid = this.getCurrentUserUID();
-        if (uid != null) {
-            this.getUsersCollection().document(uid).update(IS_MENTOR_FIELD, isMentor);
-        }
-    }
-
-    // Delete the User from Firestore
-    public void deleteUserFromFirestore() {
-        String uid = this.getCurrentUserUID();
-        if (uid != null) {
-            this.getUsersCollection().document(uid).delete();
-        }
     }
 }
